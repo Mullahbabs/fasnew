@@ -173,6 +173,43 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Mobile menu functionality
+  const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+  const mobileMenu = document.querySelector(".nav-mobile");
+
+  if (mobileMenuToggle && mobileMenu) {
+    mobileMenuToggle.addEventListener("click", function () {
+      mobileMenu.classList.toggle("active");
+      document.body.style.overflow = mobileMenu.classList.contains("active")
+        ? "hidden"
+        : "";
+    });
+
+    // Close menu when clicking on a link
+    const mobileLinks = mobileMenu.querySelectorAll(".nav-item a");
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        mobileMenu.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+    });
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function (e) {
+    if (mobileMenu && mobileMenu.classList.contains("active")) {
+      if (
+        !e.target.closest(".nav-mobile") &&
+        !e.target.closest(".mobile-menu-toggle")
+      ) {
+        mobileMenu.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   // Initialize wishlist and cart
   const wishlist = [];
   const cart = [];
@@ -183,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: "m1",
         name: "Men's Classic T-Shirt",
-        price: 12500, 
+        price: 12500,
         image: "images/menstee.jpg",
         vendor: "Premium Apparel Co.",
         rating: 4.5,
@@ -195,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: "m2",
         name: "Slim Fit Jeans",
-        price: 29999, 
+        price: 29999,
         image: "images/slimfit.jpg",
         vendor: "Premium Apparel Co.",
         rating: 4.5,
@@ -207,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: "m3",
         name: "Casual Blazer",
-        price: 45000, 
+        price: 45000,
         image: "images/blazer.jpg",
         vendor: "Premium Apparel Co.",
         rating: 4.5,
@@ -219,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: "m4",
         name: "Running Shoes",
-        price: 39999, 
+        price: 39999,
         image: "images/shoes.jpg",
         vendor: "Premium Apparel Co.",
         rating: 4.5,
@@ -230,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: "m5",
         name: "Leather Belt",
-        price: 9999, 
+        price: 9999,
         image: "images/belt.jpg",
         vendor: "Premium Apparel Co.",
         rating: 4.5,
@@ -241,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: "m6",
         name: "Classic Long Sleeve Shirt",
-        price: 28000, 
+        price: 28000,
         image: "images/long.jpg",
         vendor: "Premium Apparel Co.",
         rating: 4.5,
@@ -254,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: "w1",
         name: "Women's Summer Dress",
-        price: 22999, 
+        price: 22999,
         image: "images/womendress.jpg",
         vendor: "Premium Apparel Co.",
         rating: 4.5,
@@ -333,7 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: "a2",
         name: "Aviator Sunglasses",
-        price: 18000, 
+        price: 18000,
         image: "images/sunglasses.jpg",
         vendor: "Premium Apparel Co.",
         rating: 4.5,
@@ -344,23 +381,45 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: "a3",
         name: "Smart Watch",
-        price: 65000, 
+        price: 65000,
         image: "images/smartwatch.jpg",
         vendor: "Premium Apparel Co.",
         rating: 4.5,
         reviewCount: 128,
         description: "Feature-packed smartwatch with fitness tracking.",
-        category: "accessories", 
+        category: "accessories",
       },
       {
         id: "a4",
         name: "Canvas Backpack",
-        price: 24999, 
+        price: 24999,
         image: "images/backpack.jpg",
         vendor: "Premium Apparel Co.",
         rating: 4.5,
         reviewCount: 128,
         description: "Durable canvas backpack with laptop compartment.",
+        category: "accessories",
+      },
+      {
+        id: "a5",
+        name: "Ray-Ban Sunglasses",
+        price: 24999,
+        image: "images/rayban.jpg",
+        vendor: "Premium Apparel Co.",
+        rating: 4.5,
+        reviewCount: 128,
+        description: "Spotlight rayban fire.",
+        category: "accessories",
+      },
+      {
+        id: "a6",
+        name: "Ball Pearl Earrings",
+        price: 24999,
+        image: "images/earring.jpg",
+        vendor: "Premium Apparel Co.",
+        rating: 4.5,
+        reviewCount: 128,
+        description: "Multipurpose ball earrings.",
         category: "accessories",
       },
     ],

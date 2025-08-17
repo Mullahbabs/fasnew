@@ -8,7 +8,7 @@
   </head>
   <body>
     <header class="header">
-      <div class="logo">Fashub</div>
+      <div class="logo">Fashub NG.</div>
       <nav class="nav">
         <ul class="nav-list">
           <li class="nav-item"><a href="#collections">Collections</a></li>
@@ -145,7 +145,10 @@
     <!-- Add this to your HTML where you want the product carousel to appear -->
     <section class="featured-products">
       <div class="container">
-        <h2>Featured Products</h2>
+        <div class="section-header">
+          <span class="section-subtitle">Trending Styles</span>
+          <h2 class="section-title" style="color: #9c88ff">Featured Items</h2>
+        
 
         <!-- Tab Navigation -->
         <div class="product-tabs">
@@ -380,6 +383,47 @@
               allowfullscreen
             ></iframe>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner Advert -->
+    <section class="banner-advert">
+      <div class="container">
+        <div class="banner-content">
+          <span class="banner-badge">Limited Time Offer</span>
+          <h2>Summer Fashion Festival</h2>
+          <p>Up to 50% off on all premium collections</p>
+
+          <!-- Countdown Timer -->
+          <div class="countdown-container">
+            <div class="countdown-clock">
+              <div class="countdown-segment">
+                <span class="countdown-value" id="days">00</span>
+                <span class="countdown-label">Days</span>
+              </div>
+              <div class="countdown-segment">
+                <span class="countdown-value" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
+              </div>
+              <div class="countdown-segment">
+                <span class="countdown-value" id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+              </div>
+              <div class="countdown-segment">
+                <span class="countdown-value" id="seconds">00</span>
+                <span class="countdown-label">Seconds</span>
+              </div>
+            </div>
+          </div>
+
+          <a
+            href="#"
+            class="banner-btn"
+            aria-label="Shop summer fashion festival"
+          >
+            Shop Now <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
     </section>
@@ -659,6 +703,7 @@
 
     <script src="script.js"></script>
     <script src="products.js"></script>
+    <script src="countdown.js"></script>
     <script src="modal.js"></script>
   </body>
 </html>
