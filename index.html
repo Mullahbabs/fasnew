@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashub</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">Fashub</div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#collections">Collections</a></li>
+          <li class="nav-item"><a href="#designers">Designers</a></li>
+          <li class="nav-item"><a href="#resellers">Resellers</a></li>
+          <li class="nav-item"><a href="#virtual-show">Fashion Show</a></li>
+          <li class="nav-item">
+            <a href="#outfit-designer">Outfit Designer</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="wishlist-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+            />
+          </svg>
+          <span class="wishlist-count">0</span>
+        </button>
+        <button class="cart-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            />
+          </svg>
+          <span class="cart-count">0</span>
+        </button>
+        <button id="dark-mode-toggle" class="dark-mode-button">💡</button>
+      </div>
+    </header>
+
+    <section class="hero-carousel">
+      <div class="carousel-inner"></div>
+      <button class="carousel-control prev-button">‹</button>
+      <button class="carousel-control next-button">›</button>
+      <div class="carousel-indicators"></div>
+    </section>
+
+    <div class="ticker-container">
+      <div class="ticker-track">
+        <div class="ticker-item">
+          ✨ New Arrivals | Summer Collection Live Now ✨
+        </div>
+        <div class="ticker-item">
+          🔥 20% Off All Dresses - Limited Time Offer 🔥
+        </div>
+        <div class="ticker-item">⭐ Celebrity Stylist Picks This Week ⭐</div>
+        <div class="ticker-item">
+          🚀 Free Express Shipping on Orders Over N100,000 🚀
+        </div>
+        <div class="ticker-item">
+          🎉 Follow @FashHub for Daily Style Inspiration 🎉
+        </div>
+      </div>
+    </div>
+
+    <section class="about-us-section">
+      <div class="container">
+        <h2 class="section-title" style="color: #9c88ff">About Us</h2>
+        <div
+          class="about-us-grid"
+          style="text-align: justify; align-items: justify"
+        >
+          <!-- Image Container with overlapping images -->
+          <div class="image-container">
+            <div class="main-image">
+              <img src="images/about-us.jpg" alt="Our Team Working" />
+            </div>
+            <div class="overlay-image">
+              <img src="images/ab2.jpg" alt="Team Meeting" />
+            </div>
+          </div>
+
+          <!-- Content Container -->
+          <div class="content-container">
+            <span class="section-subtitle">Who We Are</span>
+            <h5 class="section-title" style="color: #9c88ff">
+              Fashion Excellence Since 2018
+            </h5>
+            <p class="about-text">
+              Fashub is a dynamic fashion platform connecting designers,
+              tailors, resellers, and style enthusiasts in one vibrant
+              community. We empower local creators to showcase their collections
+              while offering users a seamless way to discover, customize, and
+              purchase unique fashion pieces.
+            </p>
+
+            <div class="stats-container">
+              <div class="stat-item">
+                <div class="stat-number" data-count="150">0</div>
+                <div class="stat-label">Purchases Completed</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-count="98">0</div>
+                <div class="stat-label">Satisfied Clients</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-count="55">0</div>
+                <div class="stat-label">Top Designers</div>
+              </div>
+            </div>
+
+            <div class="signature-container">
+              <img
+                src="images/signature.jpg"
+                alt="CEO Signature"
+                class="signature"
+              />
+              <div class="ceo-info">
+                <div class="ceo-name">Janto Fubu</div>
+                <div class="ceo-title">Founder & CEO</div>
+              </div>
+            </div>
+
+            <button class="cta-button">Get In Touch</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add this to your HTML where you want the product carousel to appear -->
+    <section class="featured-products">
+      <div class="container">
+        <h2>Featured Products</h2>
+
+        <!-- Tab Navigation -->
+        <div class="product-tabs">
+          <button class="tab-btn active" data-tab="men">Men's Fashion</button>
+          <button class="tab-btn" data-tab="women">Women's Fashion</button>
+          <button class="tab-btn" data-tab="accessories">Accessories</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+          <!-- Men's Fashion Tab -->
+          <div class="tab-pane active" id="men">
+            <div class="product-carousel" id="men-carousel">
+              <!-- Products will be loaded here via JS -->
+            </div>
+          </div>
+
+          <!-- Women's Fashion Tab -->
+          <div class="tab-pane" id="women">
+            <div class="product-carousel" id="women-carousel">
+              <!-- Products will be loaded here via JS -->
+            </div>
+          </div>
+
+          <!-- Accessories Tab -->
+          <div class="tab-pane" id="accessories">
+            <div class="product-carousel" id="accessories-carousel">
+              <!-- Products will be loaded here via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YouTube Videos Section -->
+    <section class="fashion-videos">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Trending Styles</span>
+          <h2 class="section-title" style="color: #9c88ff">Fashion Lately</h2>
+        </div>
+
+        <div class="video-grid">
+          <!-- Video Card 1 -->
+          <div class="video-card" data-video-id="YOUTUBE_ID_1">
+            <div class="video-thumbnail">
+              <img src="images/vid1.jpg" alt="Fashion Video 1" />
+              <div class="video-hover-card">
+                <div class="video-info">
+                  <h3 class="video-title">Spring 2025 Collection</h3>
+                  <p class="video-description">
+                    See the hottest looks from Paris Fashion Week
+                  </p>
+                  <div class="video-meta">
+                    <span class="video-duration">12:45</span>
+                    <span class="video-views">1.2M views</span>
+                  </div>
+                </div>
+                <button class="play-button">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M8 5V19L19 12L8 5Z" fill="white" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Card 2 -->
+          <div class="video-card" data-video-id="YOUTUBE_ID_2">
+            <div class="video-thumbnail">
+              <img src="images/vid2.jpg" alt="Fashion Video 2" />
+              <div class="video-hover-card">
+                <div class="video-info">
+                  <h3 class="video-title">Spring 2025 Collection</h3>
+                  <p class="video-description">
+                    See the hottest looks from Paris Fashion Week
+                  </p>
+                  <div class="video-meta">
+                    <span class="video-duration">12:45</span>
+                    <span class="video-views">1.2M views</span>
+                  </div>
+                </div>
+                <button class="play-button">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M8 5V19L19 12L8 5Z" fill="white" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Video Card 3 -->
+          <div class="video-card" data-video-id="YOUTUBE_ID_3">
+            <div class="video-thumbnail">
+              <img src="images/vid3.jpg" alt="Fashion Video 3" />
+              <div class="video-hover-card">
+                <div class="video-info">
+                  <h3 class="video-title">Spring 2025 Collection</h3>
+                  <p class="video-description">
+                    See the hottest looks from Paris Fashion Week
+                  </p>
+                  <div class="video-meta">
+                    <span class="video-duration">12:45</span>
+                    <span class="video-views">1.2M views</span>
+                  </div>
+                </div>
+                <button class="play-button">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M8 5V19L19 12L8 5Z" fill="white" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Video Card 4 -->
+          <div class="video-card" data-video-id="YOUTUBE_ID_4">
+            <div class="video-thumbnail">
+              <img src="images/vid4.jpg" alt="Fashion Video 4" />
+              <div class="video-hover-card">
+                <div class="video-info">
+                  <h3 class="video-title">Spring 2025 Collection</h3>
+                  <p class="video-description">
+                    See the hottest looks from Paris Fashion Week
+                  </p>
+                  <div class="video-meta">
+                    <span class="video-duration">12:45</span>
+                    <span class="video-views">1.2M views</span>
+                  </div>
+                </div>
+                <button class="play-button">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M8 5V19L19 12L8 5Z" fill="white" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Video Card 5 -->
+          <div class="video-card" data-video-id="YOUTUBE_ID_5">
+            <div class="video-thumbnail">
+              <img src="images/vid5.jpg" alt="Fashion Video 5" />
+              <div class="video-hover-card">
+                <div class="video-info">
+                  <h3 class="video-title">Spring 2025 Collection</h3>
+                  <p class="video-description">
+                    See the hottest looks from Paris Fashion Week
+                  </p>
+                  <div class="video-meta">
+                    <span class="video-duration">12:45</span>
+                    <span class="video-views">1.2M views</span>
+                  </div>
+                </div>
+                <button class="play-button">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M8 5V19L19 12L8 5Z" fill="white" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Video Card 6 -->
+          <div class="video-card" data-video-id="YOUTUBE_ID_6">
+            <div class="video-thumbnail">
+              <img src="images/vid6.jpg" alt="Fashion Video 6" />
+              <div class="video-hover-card">
+                <div class="video-info">
+                  <h3 class="video-title">Spring 2025 Collection</h3>
+                  <p class="video-description">
+                    See the hottest looks from Paris Fashion Week
+                  </p>
+                  <div class="video-meta">
+                    <span class="video-duration">12:45</span>
+                    <span class="video-views">1.2M views</span>
+                  </div>
+                </div>
+                <button class="play-button">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M8 5V19L19 12L8 5Z" fill="white" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Modal -->
+      <div class="video-modal">
+        <div class="modal-content">
+          <button class="close-modal">&times;</button>
+          <div class="video-container">
+            <iframe
+              id="youtube-iframe"
+              width="560"
+              height="315"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How do I purchase items from designers on Fashub?
+          </div>
+          <div class="faq-answer">
+            <p>
+              Browse designer collections, select your desired items, and click
+              "Add to Cart". Proceed to checkout where you'll enter shipping
+              details. Note: Payment processing requires our upcoming app
+              version (coming soon!).
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Can I really connect with local tailors through Fashub?
+          </div>
+          <div class="faq-answer">
+            <p>
+              Absolutely! Our Tailor Connect feature shows verified local
+              tailors in your area. View their portfolios, request quotes, and
+              schedule fittings directly through the platform.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How does the virtual fashion show work?
+          </div>
+          <div class="faq-answer">
+            <p>
+              Designers can upload 360° views of their collections. Users
+              "attend" scheduled shows in real-time or watch recordings, with
+              options to click on showcased items for immediate purchase.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Is there a fee to sell my designs as a reseller?
+          </div>
+          <div class="faq-answer">
+            <p>
+              Fashub takes a minimal 5% commission only after a successful sale.
+              No upfront costs - you simply create a profile, upload items with
+              photos/descriptions, and set your prices.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How do I customize and order my own designs?
+          </div>
+          <div class="faq-answer">
+            <p>
+              Use our Design Studio tool to mix fabrics, patterns, and
+              silhouettes. When satisfied, submit your design. We'll match you
+              with a tailor or manufacturer and provide a quote within 48 hours.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="vibrant-footer">
+      <div class="footer-wave"></div>
+
+      <div class="footer-container">
+        <div class="footer-grid">
+          <!-- Quick Links -->
+          <div class="footer-column">
+            <h3 class="footer-title">Explore</h3>
+            <ul class="footer-links">
+              <li><a href="#">New Arrivals</a></li>
+              <li><a href="#">Trending Styles</a></li>
+              <li><a href="#">Designer Collections</a></li>
+              <li><a href="#">Seasonal Lookbooks</a></li>
+              <li><a href="#">Limited Editions</a></li>
+            </ul>
+          </div>
+
+          <!-- Customer Service -->
+          <div class="footer-column">
+            <h3 class="footer-title">Support</h3>
+            <ul class="footer-links">
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns & Exchanges</a></li>
+              <li><a href="#">Size Guide</a></li>
+            </ul>
+          </div>
+
+          <!-- About -->
+          <div class="footer-column">
+            <h3 class="footer-title">Company</h3>
+            <ul class="footer-links">
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Sustainability</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="footer-column newsletter-column">
+            <h3 class="footer-title">Stay Connected</h3>
+            <p class="newsletter-text">
+              Subscribe for exclusive offers, styling tips, and early access to
+              new collections.
+            </p>
+
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your email address" required />
+              <button type="submit">Subscribe</button>
+            </form>
+
+            <div class="social-links">
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Pinterest"
+                ><i class="fab fa-pinterest-p"></i
+              ></a>
+              <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="payment-methods">
+            <img src="https://via.placeholder.com/40x25?text=Visa" alt="Visa" />
+            <img
+              src="https://via.placeholder.com/40x25?text=MC"
+              alt="Mastercard"
+            />
+            <img
+              src="https://via.placeholder.com/40x25?text=PayPal"
+              alt="PayPal"
+            />
+            <img
+              src="https://via.placeholder.com/40x25?text=ApplePay"
+              alt="Apple Pay"
+            />
+          </div>
+
+          <div class="copyright">
+            <p>&copy; 2025 Fashub.com All rights reserved.</p>
+            <div class="legal-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Settings</a>
+            </div>
+          </div>
+
+          <div class="tech-credit">
+            <p>Powered by <span class="bellatech">BellaTECH NG</span></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal-container">
+      <div class="quick-view-modal-overlay"></div>
+      <div class="quick-view-modal">
+        <button class="close-quick-view-modal">&times;</button>
+        <div class="quick-view-content">
+          <!-- Content will be loaded dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="wishlist-modal-container">
+      <div class="wishlist-modal-overlay"></div>
+      <div class="wishlist-modal-content">
+        <button class="close-wishlist-modal">&times;</button>
+        <h2>Your Wishlist</h2>
+        <div class="wishlist-items"></div>
+      </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal-container">
+      <div class="cart-modal-overlay"></div>
+      <div class="cart-modal-content">
+        <button class="close-cart-modal">&times;</button>
+        <h2>Your Cart</h2>
+        <div class="cart-items"></div>
+        <div class="cart-total">
+          <p>Total: $<span class="total-amount">0.00</span></p>
+          <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animate statistics counting
+        function animateStats() {
+          const statNumbers = document.querySelectorAll(".stat-number");
+          const speed = 200; // The lower the faster
+          const startCountingWhen = 100; // Start counting when element is 100px from bottom of viewport
+
+          statNumbers.forEach((stat) => {
+            const target = parseInt(stat.getAttribute("data-count"));
+            const count = parseInt(stat.innerText);
+            const increment = Math.ceil(target / speed);
+
+            // Only animate if element is in view
+            const statObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    const updateCount = () => {
+                      const currentCount = parseInt(stat.innerText);
+                      if (currentCount < target) {
+                        stat.innerText = Math.min(
+                          currentCount + increment,
+                          target
+                        );
+                        setTimeout(updateCount, 1);
+                      }
+                    };
+                    updateCount();
+                    statObserver.unobserve(stat); // Stop observing once animated
+                  }
+                });
+              },
+              {
+                threshold: 0.5,
+                rootMargin: `0px 0px -${startCountingWhen}px 0px`,
+              }
+            );
+
+            statObserver.observe(stat);
+          });
+        }
+
+        // Initialize the animation
+        animateStats();
+
+        // Optional: Re-animate when scrolling back up (for single-page apps)
+        window.addEventListener("scroll", function () {
+          const scrollPosition = window.scrollY;
+          if (scrollPosition < 100) {
+            // Reset counts to 0 when scrolled to top
+            document.querySelectorAll(".stat-number").forEach((stat) => {
+              stat.innerText = "0";
+            });
+            // Re-run animation
+            animateStats();
+          }
+        });
+      });
+    </script>
+
+    <script src="script.js"></script>
+    <script src="products.js"></script>
+    <script src="modal.js"></script>
+  </body>
+</html>
