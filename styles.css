@@ -148,9 +148,10 @@ body {
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
   display: none;
-  background: #fff;
+  background: none;
   border-radius: 8px;
-  color: #007bff;
+  color: #4caf50;
+  font-size: 1.5rem;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
