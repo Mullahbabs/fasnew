@@ -1,0 +1,347 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashub</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/favicon.png" style="border-radius: 50px"
+        /></a>
+      </div>
+
+      <nav class="nav-desktop">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#collections">Collections</a></li>
+          <li class="nav-item"><a href="#designers">Designers</a></li>
+          <li class="nav-item"><a href="#resellers">Resellers</a></li>
+          <li class="nav-item"><a href="#virtual-show">Fashion Show</a></li>
+          <li class="nav-item">
+            <a href="#outfit-designer">Outfit Designer</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="wishlist-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="#4caf50"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+            />
+          </svg>
+          <span class="wishlist-count">0</span>
+        </button>
+        <button class="cart-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="#4caf50"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            />
+          </svg>
+          <span class="cart-count">0</span>
+        </button>
+        <button id="dark-mode-toggle" class="dark-mode-button">💡</button>
+        <button class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="nav-mobile">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#collections">Collections</a></li>
+          <li class="nav-item"><a href="#designers">Designers</a></li>
+          <li class="nav-item"><a href="#resellers">Resellers</a></li>
+          <li class="nav-item"><a href="#virtual-show">Fashion Show</a></li>
+          <li class="nav-item">
+            <a href="#outfit-designer">Outfit Designer</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero-banner">
+      <div class="banner-content">
+        <h1 class="banner-title">Discover Your Perfect Style</h1>
+        <p class="banner-subtitle">
+          Browse thousands of fashion items from top designers worldwide
+        </p>
+
+        <div class="category-search">
+          <div class="search-container">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search for dresses, shoes, accessories..."
+            />
+            <select class="search-categories">
+              <option value="">All Categories</option>
+              <option value="women">Women's Fashion</option>
+              <option value="men">Men's Fashion</option>
+              <option value="shoes">Shoes & Footwear</option>
+              <option value="accessories">Accessories</option>
+              <option value="jewelry">Jewelry</option>
+              <option value="bags">Bags & Purses</option>
+              <option value="activewear">Activewear</option>
+              <option value="vintage">Vintage</option>
+            </select>
+            <button class="search-button">Search</button>
+          </div>
+
+          <div class="popular-categories">
+            <span class="category-tag">Summer Collection</span>
+            <span class="category-tag">Designer Dresses</span>
+            <span class="category-tag">Sneakers</span>
+            <span class="category-tag">Handbags</span>
+            <span class="category-tag">Watches</span>
+            <span class="category-tag">Jeans</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-container">
+      <div class="ticker-track">
+        <div class="ticker-item">
+          ✨ New Arrivals | Summer Collection Live Now ✨
+        </div>
+        <div class="ticker-item">
+          🔥 20% Off All Dresses - Limited Time Offer 🔥
+        </div>
+        <div class="ticker-item">⭐ Celebrity Stylist Picks This Week ⭐</div>
+        <div class="ticker-item">
+          🚀 Free Express Shipping on Orders Over N100,000 🚀
+        </div>
+        <div class="ticker-item">
+          🎉 Follow @FashHub for Daily Style Inspiration 🎉
+        </div>
+      </div>
+    </div>
+
+    <footer class="vibrant-footer">
+      <div class="footer-wave"></div>
+
+      <div class="footer-container">
+        <div class="footer-grid">
+          <!-- Quick Links -->
+          <div class="footer-column">
+            <h3 class="footer-title">Explore</h3>
+            <ul class="footer-links">
+              <li><a href="#">New Arrivals</a></li>
+              <li><a href="#">Trending Styles</a></li>
+              <li><a href="#">Designer Collections</a></li>
+              <li><a href="#">Seasonal Lookbooks</a></li>
+              <li><a href="#">Limited Editions</a></li>
+            </ul>
+          </div>
+
+          <!-- Customer Service -->
+          <div class="footer-column">
+            <h3 class="footer-title">Support</h3>
+            <ul class="footer-links">
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns & Exchanges</a></li>
+              <li><a href="#">Size Guide</a></li>
+            </ul>
+          </div>
+
+          <!-- About -->
+          <div class="footer-column">
+            <h3 class="footer-title">Company</h3>
+            <ul class="footer-links">
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Sustainability</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="footer-column newsletter-column">
+            <h3 class="footer-title">Stay Connected</h3>
+            <p class="newsletter-text">
+              Subscribe for exclusive offers, styling tips, and early access to
+              new collections.
+            </p>
+
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your email address" required />
+              <button type="submit">Subscribe</button>
+            </form>
+
+            <div class="social-links">
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Pinterest"
+                ><i class="fab fa-pinterest-p"></i
+              ></a>
+              <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="payment-methods">
+            <img src="https://via.placeholder.com/40x25?text=Visa" alt="Visa" />
+            <img
+              src="https://via.placeholder.com/40x25?text=MC"
+              alt="Mastercard"
+            />
+            <img
+              src="https://via.placeholder.com/40x25?text=PayPal"
+              alt="PayPal"
+            />
+            <img
+              src="https://via.placeholder.com/40x25?text=ApplePay"
+              alt="Apple Pay"
+            />
+          </div>
+
+          <div class="copyright">
+            <p>&copy; 2025 Fashub.com All rights reserved.</p>
+            <div class="legal-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Settings</a>
+            </div>
+          </div>
+
+          <div class="tech-credit">
+            <p>Powered by <span class="bellatech">BellaTECH NG</span></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal-container">
+      <div class="quick-view-modal-overlay"></div>
+      <div class="quick-view-modal">
+        <button class="close-quick-view-modal">&times;</button>
+        <div class="quick-view-content">
+          <!-- Content will be loaded dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="wishlist-modal-container">
+      <div class="wishlist-modal-overlay"></div>
+      <div class="wishlist-modal-content">
+        <button class="close-wishlist-modal">&times;</button>
+        <h2>Your Wishlist</h2>
+        <div class="wishlist-items"></div>
+      </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal-container">
+      <div class="cart-modal-overlay"></div>
+      <div class="cart-modal-content">
+        <button class="close-cart-modal">&times;</button>
+        <h2>Your Cart</h2>
+        <div class="cart-items"></div>
+        <div class="cart-total">
+          <p>Total: $<span class="total-amount">0.00</span></p>
+          <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animate statistics counting
+        function animateStats() {
+          const statNumbers = document.querySelectorAll(".stat-number");
+          const speed = 200; // The lower the faster
+          const startCountingWhen = 100; // Start counting when element is 100px from bottom of viewport
+
+          statNumbers.forEach((stat) => {
+            const target = parseInt(stat.getAttribute("data-count"));
+            const count = parseInt(stat.innerText);
+            const increment = Math.ceil(target / speed);
+
+            // Only animate if element is in view
+            const statObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    const updateCount = () => {
+                      const currentCount = parseInt(stat.innerText);
+                      if (currentCount < target) {
+                        stat.innerText = Math.min(
+                          currentCount + increment,
+                          target
+                        );
+                        setTimeout(updateCount, 1);
+                      }
+                    };
+                    updateCount();
+                    statObserver.unobserve(stat); // Stop observing once animated
+                  }
+                });
+              },
+              {
+                threshold: 0.5,
+                rootMargin: `0px 0px -${startCountingWhen}px 0px`,
+              }
+            );
+
+            statObserver.observe(stat);
+          });
+        }
+
+        // Initialize the animation
+        animateStats();
+
+        // Optional: Re-animate when scrolling back up (for single-page apps)
+        window.addEventListener("scroll", function () {
+          const scrollPosition = window.scrollY;
+          if (scrollPosition < 100) {
+            // Reset counts to 0 when scrolled to top
+            document.querySelectorAll(".stat-number").forEach((stat) => {
+              stat.innerText = "0";
+            });
+            // Re-run animation
+            animateStats();
+          }
+        });
+      });
+    </script>
+
+    <script src="script.js"></script>
+    <script src="products.js"></script>
+    <script src="countdown.js"></script>
+    <script src="modal.js"></script>
+  </body>
+</html>
