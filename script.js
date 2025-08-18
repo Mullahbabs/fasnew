@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (mobileMenuToggle && mobileMenu) {
     mobileMenuToggle.addEventListener("click", function () {
+      this.classList.toggle("active");
       mobileMenu.classList.toggle("active");
       document.body.style.overflow = mobileMenu.classList.contains("active")
         ? "hidden"
@@ -189,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const mobileLinks = mobileMenu.querySelectorAll(".nav-item a");
     mobileLinks.forEach((link) => {
       link.addEventListener("click", function () {
+        mobileMenuToggle.classList.remove("active");
         mobileMenu.classList.remove("active");
         document.body.style.overflow = "";
       });
@@ -202,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
         !e.target.closest(".nav-mobile") &&
         !e.target.closest(".mobile-menu-toggle")
       ) {
+        mobileMenuToggle.classList.remove("active");
         mobileMenu.classList.remove("active");
         document.body.style.overflow = "";
       }
