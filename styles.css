@@ -51,9 +51,31 @@ body {
 }
 
 .logo {
+  /* Size & Shape */
+  width: 100px; /* Perfect circle needs equal width/height */
+  height: 100px;
+  border-radius: 50px; /* Half of width/height for perfect circle */
+
+  /* Positioning */
+  position: relative;
+  transform: translateX(-10%);
+  right: -50px;
+  z-index: 101;
+
+  /* Content Alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Visual Styling */
   font-size: 1.5rem;
   font-weight: bold;
-  z-index: 101;
+  background: #ffffff; /* Optional: solid background */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: subtle depth */
+  border: 3px solid #3498db; /* Optional: colored border */
+
+  /* Ensures clickability */
+  cursor: pointer;
 }
 
 /* Desktop Navigation */
