@@ -811,7 +811,7 @@ document.addEventListener("DOMContentLoaded", function () {
     navCartCount.textContent = totalItems;
   }
 
-  // Existing modal functions (keep these as they are)
+  // Initialize wishlist and cart modal
   function openWishlistModal() {
     updateWishlistModal();
     wishlistModal.style.display = "flex";
