@@ -2544,8 +2544,8 @@ body {
   }
 }
 
-.fashub-collection-week {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.m-collections {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
 }
 
 .fashub-week-header {
@@ -2580,7 +2580,6 @@ body {
 
 .fashub-featured-container {
   display: flex;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   border-radius: 20px;
   overflow: hidden;
   margin-bottom: 50px;
