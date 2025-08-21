@@ -977,6 +977,8 @@ document.addEventListener("DOMContentLoaded", function () {
   updateCartCount();
 });
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const faqItems = document.querySelectorAll(".faq-item");
 
