@@ -1135,6 +1135,7 @@ body {
 
 .remove-item {
   color: #e53e3e;
+  border: none;
   cursor: pointer;
   margin-left: 1rem;
   font-size: 1.2rem;
@@ -1318,21 +1319,24 @@ body {
 .order-summary {
   background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
   padding: 25px;
+  justify-content: space-between;
   border-radius: 15px;
 }
 
 .checkout-items {
   max-height: 300px;
+  padding: 8px 0;
+  justify-content: space-between;
   overflow-y: auto;
   margin-bottom: 20px;
 }
 
 .checkout-item {
-  padding: 12px 0;
-  border-bottom: 1px solid #e2e8f0;
-  display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--primary);
   text-align: justify;
-  justify-content: space-between;
+  display: flex;
+  justify-content: space-around;
 }
 
 .custom-select {
