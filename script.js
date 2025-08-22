@@ -1,98 +1,115 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Load cart and wishlist from localStorage
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  // Delivery prices for each state in Nigeria (in Naira)
+  const stateDeliveryPrices = {
+    Abia: 1500,
+    Adamawa: 2000,
+    "Akwa Ibom": 1800,
+    Anambra: 1600,
+    Bauchi: 2200,
+    Bayelsa: 1900,
+    Benue: 1700,
+    Borno: 2500,
+    "Cross River": 1700,
+    Delta: 1600,
+    Ebonyi: 1700,
+    Edo: 1600,
+    Ekiti: 1600,
+    Enugu: 1600,
+    Gombe: 2000,
+    Imo: 1500,
+    Jigawa: 2200,
+    Kaduna: 1800,
+    Kano: 2000,
+    Katsina: 2100,
+    Kebbi: 2200,
+    Kogi: 1700,
+    Kwara: 1700,
+    Lagos: 1200,
+    Nasarawa: 1700,
+    Niger: 1800,
+    Ogun: 1400,
+    Ondo: 1600,
+    Osun: 1600,
+    Oyo: 1500,
+    Plateau: 1800,
+    Rivers: 1600,
+    Sokoto: 2300,
+    Taraba: 2100,
+    Yobe: 2400,
+    Zamfara: 2300,
+    "FCT Abuja": 1500,
+  };
+
   const carouselInner = document.querySelector(".carousel-inner");
-
   const prevButton = document.querySelector(".prev-button");
-
   const nextButton = document.querySelector(".next-button");
-
   const indicatorsContainer = document.querySelector(".carousel-indicators");
 
   const slides = [
     {
       title: "Discover Your Signature Style",
-
       subtitle: "Unleash your creativity with our diverse collections.",
-
       image: "images/bg.png",
     },
-
     {
       title: "Connect with Local Artisans",
-
       subtitle: "Find the perfect tailor or designer for your next project.",
-
       image: "images/bg2.jpg",
     },
-
     {
       title: "Experience Virtual Fashion Shows",
-
       subtitle: "Front-row seats to the latest runway trends.",
-
       image: "images/bg3.jpg",
     },
   ];
 
   let currentSlide = 0;
+  let autoPlayInterval;
 
-  let autoPlayInterval; // Function to render carousel slides and indicators
-
+  // Function to render carousel slides and indicators
   function renderSlides() {
     carouselInner.innerHTML = "";
-
     indicatorsContainer.innerHTML = "";
 
     slides.forEach((slide, index) => {
       const slideItem = document.createElement("div");
-
       slideItem.classList.add("carousel-item");
-
       if (index === currentSlide) {
         slideItem.classList.add("active");
       }
-
       slideItem.style.backgroundImage = `url('${slide.image}')`;
-
       slideItem.innerHTML = `
-
-        <div class="carousel-content">
-
-          <h1>${slide.title}</h1>
-
-          <p>${slide.subtitle}</p>
-
-        </div>
-
-      `;
-
+                        <div class="carousel-content">
+                            <h1>${slide.title}</h1>
+                            <p>${slide.subtitle}</p>
+                        </div>
+                    `;
       carouselInner.appendChild(slideItem);
 
       const indicator = document.createElement("span");
-
       indicator.classList.add("indicator");
-
       if (index === currentSlide) {
         indicator.classList.add("active");
       }
-
       indicator.addEventListener("click", () => {
         goToSlide(index);
-
         stopAutoPlay();
       });
-
       indicatorsContainer.appendChild(indicator);
     });
-  } // Function to update carousel position
+  }
 
+  // Function to update carousel position
   function updateCarousel() {
     const items = document.querySelectorAll(".carousel-item");
-
     const indicators = document.querySelectorAll(".indicator");
 
     items.forEach((item, index) => {
       item.classList.remove("active");
-
       if (index === currentSlide) {
         setTimeout(() => {
           item.classList.add("active");
@@ -103,71 +120,63 @@ document.addEventListener("DOMContentLoaded", () => {
     indicators.forEach((indicator, index) => {
       indicator.classList.toggle("active", index === currentSlide);
     });
-  } // Function to go to a specific slide
+  }
 
+  // Function to go to a specific slide
   function goToSlide(index) {
     currentSlide = index;
-
     updateCarousel();
-  } // Autoplay functionality
+  }
 
+  // Autoplay functionality
   function startAutoPlay() {
     autoPlayInterval = setInterval(() => {
       currentSlide = (currentSlide + 1) % slides.length;
-
       updateCarousel();
     }, 5000); // Change slide every 5 seconds
   }
 
   function stopAutoPlay() {
     clearInterval(autoPlayInterval);
-  } // Event listeners for carousel controls
+  }
 
+  // Event listeners for carousel controls
   nextButton.addEventListener("click", () => {
     currentSlide = (currentSlide + 1) % slides.length;
-
     updateCarousel();
-
     stopAutoPlay();
   });
 
   prevButton.addEventListener("click", () => {
     currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-
     updateCarousel();
-
     stopAutoPlay();
-  }); // Pause on hover
+  });
 
+  // Pause on hover
   carouselInner.addEventListener("mouseenter", stopAutoPlay);
+  carouselInner.addEventListener("mouseleave", startAutoPlay);
 
-  carouselInner.addEventListener("mouseleave", startAutoPlay); // Initial render and start autoplay
-
+  // Initial render and start autoplay
   renderSlides();
+  startAutoPlay();
 
-  startAutoPlay(); // Dark Mode Toggle (existing code, unchanged)
-
+  // Dark Mode Toggle (existing code, unchanged)
   const darkModeToggle = document.getElementById("dark-mode-toggle");
-
   darkModeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
-
     if (document.body.classList.contains("dark-mode")) {
       localStorage.setItem("theme", "dark");
-
       darkModeToggle.textContent = "🌙";
     } else {
       localStorage.setItem("theme", "light");
-
       darkModeToggle.textContent = "💡";
     }
   });
 
   const savedTheme = localStorage.getItem("theme");
-
   if (savedTheme === "dark") {
     document.body.classList.add("dark-mode");
-
     darkModeToggle.textContent = "🌙";
   }
 });
@@ -213,9 +222,50 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize wishlist and cart
-  const wishlist = [];
-  const cart = [];
+  // Load cart and wishlist from localStorage
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  // Delivery prices for each state in Nigeria (in Naira)
+  const stateDeliveryPrices = {
+    Abia: 1500,
+    Adamawa: 2000,
+    AkwaIbom: 1800,
+    Anambra: 1600,
+    Bauchi: 2200,
+    Bayelsa: 1900,
+    Benue: 1700,
+    Borno: 2500,
+    CrossRiver: 1700,
+    Delta: 1600,
+    Ebonyi: 1700,
+    Edo: 1600,
+    Ekiti: 1600,
+    Enugu: 1600,
+    Gombe: 2000,
+    Imo: 1500,
+    Jigawa: 2200,
+    Kaduna: 1800,
+    Kano: 2000,
+    Katsina: 2100,
+    Kebbi: 2200,
+    Kogi: 1700,
+    Kwara: 1700,
+    Lagos: 1200,
+    Nasarawa: 1700,
+    Niger: 1800,
+    Ogun: 1400,
+    Ondo: 1600,
+    Osun: 1600,
+    Oyo: 1500,
+    Plateau: 1800,
+    Rivers: 1600,
+    Sokoto: 2300,
+    Taraba: 2100,
+    Yobe: 2400,
+    Zamfara: 2300,
+    "FCT Abuja": 1500,
+  };
 
   //product data in Naira (₦)
   const products = {
@@ -751,6 +801,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartModal = document.querySelector(".cart-modal-container");
   const wishlistModal = document.querySelector(".wishlist-modal-container");
   const quickViewModal = document.querySelector(".quick-view-modal-container");
+  const checkoutModal = document.querySelector(".checkout-modal-container");
 
   // Tab Elements
   const tabBtns = document.querySelectorAll(".tab-btn");
@@ -762,6 +813,12 @@ document.addEventListener("DOMContentLoaded", function () {
       minimumFractionDigits: 0,
       maximumFractionDigits: 2,
     })}`;
+  }
+
+  // Save cart and wishlist to localStorage
+  function saveToLocalStorage() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }
 
   // Initialize product carousels
@@ -780,48 +837,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Create product card HTML
   function createProductCard(product) {
+    const isInWishlist = wishlist.some((item) => item.id === product.id);
+
     const productCard = document.createElement("div");
     productCard.className = "product-card";
     productCard.dataset.id = product.id;
     productCard.dataset.category = product.category;
 
     productCard.innerHTML = `
-      <div class="product-image-container">
-        <img src="${product.image}" alt="${product.name}" class="product-image">
-        <button class="quick-view-btn" data-id="${
-          product.id
-        }" title="Quick View">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-          </svg>
-        </button>
-      </div>
-      <div class="product-info">
-        <span class="product-vendor">${product.vendor || "FashHub"}</span>
-        <h3 class="product-title">${product.name}</h3>
-        <div class="product-rating">
-          <div class="stars">
-            ${'<svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'.repeat(
-              Math.floor(product.rating || 0)
-            )}
-            ${'<svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'.repeat(
-              5 - Math.floor(product.rating || 0)
-            )}
-          </div>
-          <span class="rating-count">(${product.reviewCount || 0})</span>
-        </div>
-        <p class="product-price">${formatPrice(product.price)}</p>
-        <div class="product-actions">
-          <button class="add-to-cart">Add to Cart</button>
-          <button class="wishlist-btn">
-            <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    `;
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${
+      product.name
+    }" class="product-image">
+                        <button class="quick-view-btn" data-id="${
+                          product.id
+                        }" title="Quick View">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-vendor">${
+                          product.vendor || "FashHub"
+                        }</span>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                ${'<svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'.repeat(
+                                  Math.floor(product.rating || 0)
+                                )}
+                                ${'<svg class="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'.repeat(
+                                  5 - Math.floor(product.rating || 0)
+                                )}
+                            </div>
+                            <span class="rating-count">(${
+                              product.reviewCount || 0
+                            })</span>
+                        </div>
+                        <p class="product-price">${formatPrice(
+                          product.price
+                        )}</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="wishlist-btn ${
+                              isInWishlist ? "active" : ""
+                            }">
+                                <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="${
+                                  isInWishlist ? "red" : "currentColor"
+                                }" viewBox="0 0 16 16">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
 
     return productCard;
   }
@@ -881,36 +952,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!product) return;
 
+    // Check if product is in wishlist
+    const isInWishlist = wishlist.some((item) => item.id === productId);
+
     // Populate the quick view modal
     const quickViewContent = document.querySelector(".quick-view-content");
     quickViewContent.innerHTML = `
-      <img src="${product.image}" alt="${
+                    <img src="${product.image}" alt="${
       product.name
     }" class="quick-view-image">
-      <div class="quick-view-details">
-        <h2>${product.name}</h2>
-        <p class="quick-view-price">${formatPrice(product.price)}</p>
-        <p class="quick-view-description">${product.description}</p>
-        <div class="quick-view-actions">
-          <button class="add-to-cart" data-id="${
-            product.id
-          }">Add to Cart</button>
-          <button class="wishlist-btn" data-id="${product.id}">
-            <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    `;
-
-    // Check if product is in wishlist and update button
-    const isInWishlist = wishlist.some((item) => item.id === productId);
-    const wishlistBtn = quickViewContent.querySelector(".wishlist-btn");
-    if (isInWishlist) {
-      wishlistBtn.classList.add("active");
-      wishlistBtn.querySelector(".heart-icon").style.fill = "red";
-    }
+                    <div class="quick-view-details">
+                        <h2>${product.name}</h2>
+                        <p class="quick-view-price">${formatPrice(
+                          product.price
+                        )}</p>
+                        <p class="quick-view-description">${
+                          product.description
+                        }</p>
+                        <div class="quick-view-actions">
+                            <button class="add-to-cart" data-id="${
+                              product.id
+                            }">Add to Cart</button>
+                            <button class="wishlist-btn ${
+                              isInWishlist ? "active" : ""
+                            }" data-id="${product.id}">
+                                <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="${
+                                  isInWishlist ? "red" : "currentColor"
+                                }" viewBox="0 0 16 16">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
 
     // Show the modal
     quickViewModal.style.display = "block";
@@ -937,7 +1011,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Existing functions from your original code (with slight modifications)
+  // Wishlist Handle
   function handleWishlistClick(btn) {
     const productCard = btn.closest(".product-card");
     const productId = productCard.dataset.id;
@@ -967,6 +1041,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     updateWishlistCount();
+    saveToLocalStorage();
   }
 
   function handleAddToCart(btn) {
@@ -993,6 +1068,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateCartModal();
     updateCartCount();
+    saveToLocalStorage();
 
     // Show added to cart notification
     showNotification(`${product.name} added to cart`);
@@ -1042,6 +1118,18 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.overflow = "";
   }
 
+  // Open checkout modal
+  function openCheckoutModal() {
+    updateCheckoutModal();
+    checkoutModal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeCheckoutModal() {
+    checkoutModal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+
   function updateWishlistModal() {
     const wishlistItemsContainer = document.querySelector(".wishlist-items");
     wishlistItemsContainer.innerHTML = "";
@@ -1055,17 +1143,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const wishlistItem = document.createElement("div");
       wishlistItem.className = "wishlist-item";
       wishlistItem.innerHTML = `
-        <div style="display: flex; align-items: center;">
-          <img src="${item.image}" alt="${
+                        <div style="display: flex; align-items: center;">
+                            <img src="${item.image}" alt="${
         item.name
       }" style="width: 50px; height: 50px; object-fit: cover; margin-right: 1rem;">
-          <div>
-            <h4>${item.name}</h4>
-            <p>${formatPrice(item.price)}</p>
-          </div>
-        </div>
-        <button class="remove-item" data-id="${item.id}">Remove</button>
-      `;
+                            <div>
+                                <h4>${item.name}</h4>
+                                <p>${formatPrice(item.price)}</p>
+                            </div>
+                        </div>
+                        <button class="remove-item" data-id="${
+                          item.id
+                        }">Remove</button>
+                    `;
       wishlistItemsContainer.appendChild(wishlistItem);
     });
 
@@ -1079,6 +1169,7 @@ document.addEventListener("DOMContentLoaded", function () {
           wishlist.splice(index, 1);
           updateWishlistModal();
           updateWishlistCount();
+          saveToLocalStorage();
 
           // Update the heart icon on the product card
           const productCard = document.querySelector(
@@ -1100,11 +1191,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateCartModal() {
     const cartItemsContainer = document.querySelector(".cart-items");
     const cartTotal = document.querySelector(".total-amount");
+    const checkoutBtn = document.querySelector(".checkout-btn");
     cartItemsContainer.innerHTML = "";
 
     if (cart.length === 0) {
       cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
       cartTotal.textContent = formatPrice(0);
+      checkoutBtn.disabled = true;
+      checkoutBtn.style.opacity = "0.5";
       return;
     }
 
@@ -1117,29 +1211,39 @@ document.addEventListener("DOMContentLoaded", function () {
       const cartItem = document.createElement("div");
       cartItem.className = "cart-item";
       cartItem.innerHTML = `
-        <div style="display: flex; align-items: center;">
-          <img src="${item.image}" alt="${
+                        <div style="display: flex; align-items: center;">
+                            <img src="${item.image}" alt="${
         item.name
       }" style="width: 50px; height: 50px; object-fit: cover; margin-right: 1rem;">
-          <div>
-            <h4>${item.name}</h4>
-            <p>${formatPrice(item.price)}</p>
-          </div>
-        </div>
-        <div>
-          <div class="cart-item-quantity">
-            <button class="decrement-quantity" data-id="${item.id}">-</button>
-            <span>${item.quantity}</span>
-            <button class="increment-quantity" data-id="${item.id}">+</button>
-          </div>
-          <p class="cart-item-price">${formatPrice(itemTotal)}</p>
-        </div>
-        <button class="remove-item" data-id="${item.id}">Remove</button>
-      `;
+                            <div>
+                                <h4>${item.name}</h4>
+                                <p>${formatPrice(item.price)}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="cart-item-quantity">
+                                <button class="decrement-quantity" data-id="${
+                                  item.id
+                                }">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="increment-quantity" data-id="${
+                                  item.id
+                                }">+</button>
+                            </div>
+                            <p class="cart-item-price">${formatPrice(
+                              itemTotal
+                            )}</p>
+                        </div>
+                        <button class="remove-item" data-id="${
+                          item.id
+                        }">Remove</button>
+                    `;
       cartItemsContainer.appendChild(cartItem);
     });
 
     cartTotal.textContent = formatPrice(total);
+    checkoutBtn.disabled = false;
+    checkoutBtn.style.opacity = "1";
 
     // Add event listeners to quantity buttons
     document.querySelectorAll(".increment-quantity").forEach((btn) => {
@@ -1150,6 +1254,7 @@ document.addEventListener("DOMContentLoaded", function () {
           item.quantity += 1;
           updateCartModal();
           updateCartCount();
+          saveToLocalStorage();
         }
       });
     });
@@ -1162,6 +1267,7 @@ document.addEventListener("DOMContentLoaded", function () {
           item.quantity -= 1;
           updateCartModal();
           updateCartCount();
+          saveToLocalStorage();
         }
       });
     });
@@ -1175,14 +1281,178 @@ document.addEventListener("DOMContentLoaded", function () {
           cart.splice(index, 1);
           updateCartModal();
           updateCartCount();
+          saveToLocalStorage();
         }
       });
     });
+    document
+      .querySelector(".checkout-btn")
+      .addEventListener("click", openCheckoutModal);
+  }
+
+  function openCheckoutModal() {
+    updateCheckoutModal();
+    document.querySelector(".checkout-modal-container").style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeCheckoutModal() {
+    document.querySelector(".checkout-modal-container").style.display = "none";
+    document.body.style.overflow = "";
+  }
+
+  function updateCheckoutModal() {
+    const checkoutItemsContainer = document.querySelector(".checkout-items");
+    const subtotalElement = document.querySelector(".checkout-subtotal");
+    const deliverySelect = document.querySelector("#state");
+    const deliveryCostElement = document.querySelector(".delivery-cost");
+    const totalElement = document.querySelector(".checkout-total");
+    const transferAmountElement = document.querySelector("#transfer-amount");
+
+    checkoutItemsContainer.innerHTML = "";
+
+    if (cart.length === 0) {
+      checkoutItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+      return;
+    }
+
+    let subtotal = 0;
+
+    // Populate items
+    cart.forEach((item) => {
+      const itemTotal = item.price * item.quantity;
+      subtotal += itemTotal;
+
+      const checkoutItem = document.createElement("div");
+      checkoutItem.className = "checkout-item";
+      checkoutItem.innerHTML = `
+      <div style="display: flex; justify-content: space-between;">
+        <span>${item.name} x ${item.quantity}</span>
+        <span>${formatPrice(itemTotal)}</span>
+      </div>
+    `;
+      checkoutItemsContainer.appendChild(checkoutItem);
+    });
+
+    subtotalElement.textContent = formatPrice(subtotal);
+
+    // Populate state dropdown
+    deliverySelect.innerHTML = '<option value="">Select your state</option>';
+    for (const state in stateDeliveryPrices) {
+      const option = document.createElement("option");
+      option.value = state;
+      option.textContent = `${state} - ${formatPrice(
+        stateDeliveryPrices[state]
+      )}`;
+      deliverySelect.appendChild(option);
+    }
+
+    // Update delivery cost and total when state is selected
+    deliverySelect.addEventListener("change", function () {
+      const selectedState = this.value;
+      if (selectedState && stateDeliveryPrices[selectedState]) {
+        const deliveryCost = stateDeliveryPrices[selectedState];
+        deliveryCostElement.textContent = formatPrice(deliveryCost);
+        totalElement.textContent = formatPrice(subtotal + deliveryCost);
+      } else {
+        deliveryCostElement.textContent = formatPrice(0);
+        totalElement.textContent = formatPrice(subtotal);
+      }
+    });
+
+    // Initialize with no delivery cost
+    deliveryCostElement.textContent = formatPrice(0);
+    totalElement.textContent = formatPrice(subtotal);
+  }
+
+  // Handle checkout form submission
+  function handleCheckoutSubmit(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const state = formData.get("state");
+
+    if (!state) {
+      alert("Please select your state for delivery");
+      return;
+    }
+
+    // Calculate totals
+    const subtotal = cart.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+    const deliveryCost = stateDeliveryPrices[state] || 0;
+    const total = subtotal + deliveryCost;
+
+    // In a real implementation, you would process the order here
+    // For this example, we'll just show a confirmation
+    alert(
+      `Order placed successfully!\n\nSubtotal: ${formatPrice(
+        subtotal
+      )}\nDelivery: ${formatPrice(deliveryCost)}\nTotal: ${formatPrice(
+        total
+      )}\n\nPlease transfer ${formatPrice(
+        total
+      )} to:\nBank: FashHub Bank\nAccount: 0123456789\nAccount Name: FashHub Enterprises\n\nAfter payment, send proof to payment@fashhub.ng`
+    );
+
+    // Clear cart after successful order
+    cart = [];
+    updateCartCount();
+    updateCartModal();
+    saveToLocalStorage();
+
+    // Close the checkout modal
+    closeCheckoutModal();
   }
 
   // Initialize counts
   updateWishlistCount();
   updateCartCount();
+
+  // Add event listeners for modals
+  navWishlistBtn.addEventListener("click", openWishlistModal);
+  navCartBtn.addEventListener("click", openCartModal);
+
+  document
+    .querySelector(".close-wishlist-modal")
+    .addEventListener("click", closeWishlistModal);
+  document
+    .querySelector(".wishlist-modal-overlay")
+    .addEventListener("click", closeWishlistModal);
+
+  document
+    .querySelector(".close-cart-modal")
+    .addEventListener("click", closeCartModal);
+  document
+    .querySelector(".cart-modal-overlay")
+    .addEventListener("click", closeCartModal);
+
+  document
+    .querySelector(".close-checkout-modal")
+    .addEventListener("click", closeCheckoutModal);
+  document
+    .querySelector(".checkout-modal-overlay")
+    .addEventListener("click", closeCheckoutModal);
+
+  document
+    .querySelector(".checkout-btn")
+    .addEventListener("click", openCheckoutModal);
+  document
+    .querySelector(".checkout-form")
+    .addEventListener("submit", handleCheckoutSubmit);
+
+  // Close modals with Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      if (wishlistModal.style.display === "flex") closeWishlistModal();
+      if (cartModal.style.display === "flex") closeCartModal();
+      if (quickViewModal.style.display === "block") closeQuickViewModal();
+      if (checkoutModal.style.display === "flex") closeCheckoutModal();
+    }
+  });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
