@@ -1236,7 +1236,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                         <button class="remove-item" data-id="${
                           item.id
-                        }">Remove</button>
+                        }"><i class="fas fa-trash"></i></button>
                     `;
       cartItemsContainer.appendChild(cartItem);
     });
