@@ -7,7 +7,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header class="header">
@@ -21,7 +21,7 @@
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html">Home</a></li>
           <li class="nav-item"><a href="#collections">Collections</a></li>
-          <li class="nav-item"><a href="#designers">Designers</a></li>
+          <li class="nav-item"><a href="designers.html">Designers</a></li>
           <li class="nav-item"><a href="#resellers">Resellers</a></li>
           <li class="nav-item"><a href="#virtual-show">Fashion Show</a></li>
           <li class="nav-item">
@@ -517,6 +517,128 @@
       </div>
     </div>
 
+     <!-- Checkout Modal -->
+    <div class="checkout-modal-container" style="display: none;">
+        <div class="checkout-modal-overlay" onclick="closeModal('checkout')"></div>
+        <div class="checkout-modal">
+            <button class="close-checkout-modal" onclick="closeModal('checkout')">&times;</button>
+            <h2><i class="fas fa-credit-card"></i> Complete Your Order</h2>
+            
+            <div class="checkout-content">
+                <div class="checkout-form">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <h3>Delivery Information</h3>
+                    <div class="form-group">
+                        <label for="address">Delivery Address</label>
+                        <input type="text" id="address" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <select id="state" class="form-control" required>
+                                <option value="">Select your state</option>
+                                <option value="Lagos">Lagos</option>
+                                <option value="Abuja">Abuja</option>
+                                <option value="Rivers">Rivers</option>
+                                <option value="Kano">Kano</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="bank-details">
+                        <h3><i class="fas fa-university"></i> Bank Transfer Details</h3>
+                        <div class="bank-info">
+                            <span class="label">Bank Name:</span>
+                            <span>FashHub Bank</span>
+                        </div>
+                        <div class="bank-info">
+                            <span class="label">Account Number:</span>
+                            <span>0123456789</span>
+                        </div>
+                        <div class="bank-info">
+                            <span class="label">Account Name:</span>
+                            <span>FashHub Enterprises</span>
+                        </div>
+                        <div class="bank-info">
+                            <span class="label">Amount:</span>
+                            <span id="transfer-amount"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="proof">Upload Proof of Payment</label>
+                        <input type="file" id="proof" class="form-control">
+                    </div>
+                    
+                    <button type="submit" class="btn checkout-form" id="complete-order-btn">Complete Order</button>
+                </div>
+                
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div class="checkout-items">
+                        <div class="checkout-item">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="checkout-item">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span class="checkout-subtotal"></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span class="delivery-cost"></span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <span class="checkout-total"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="success-modal" id="success-modal">
+        <div class="success-modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="success-title">Order Successful!</h2>
+            <p class="success-message">Thank you for your purchase.<br> Your order has been placed successfully.<br> Please check the email address provided above for delivery details.</p>
+            <button class="success-button" id="success-close-btn">Continue Shopping</button>
+        </div>
+    </div>
+
     <script>
         // Countdown timer functionality
         function updateFashubCountdown() {
@@ -559,9 +681,9 @@
     </script>
 
 
-    <script src="script.js"></script>
-    <script src="products.js"></script>
-    <script src="countdown.js"></script>
-    <script src="modal.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/modal.js"></script>
   </body>
 </html>

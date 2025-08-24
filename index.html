@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fashub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header class="header">
@@ -13,8 +13,9 @@
       
       <nav class="nav-desktop">
         <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Home</a></li>
           <li class="nav-item"><a href="collections.html">Collections</a></li>
-          <li class="nav-item"><a href="#designers">Designers</a></li>
+          <li class="nav-item"><a href="designers.html">Designers</a></li>
           <li class="nav-item"><a href="#resellers">Resellers</a></li>
           <li class="nav-item"><a href="#virtual-show">Fashion Show</a></li>
           <li class="nav-item">
@@ -936,37 +937,49 @@
                         <input type="file" id="proof" class="form-control">
                     </div>
                     
-                    <button type="submit" class="btn">Complete Order</button>
+                    <button type="submit" class="btn checkout-form" id="complete-order-btn">Complete Order</button>
                 </div>
                 
                 <div class="order-summary">
                     <h3>Order Summary</h3>
                     <div class="checkout-items">
                         <div class="checkout-item">
-                            <span>Premium Summer Dress</span>
-                            <span>₦ 25,000</span>
+                            <span></span>
+                            <span></span>
                         </div>
                         <div class="checkout-item">
-                            <span>Designer Handbag</span>
-                            <span>₦ 42,000</span>
+                            <span></span>
+                            <span></span>
                         </div>
                     </div>
                     <div class="summary-row">
                         <span>Subtotal</span>
-                        <span class="checkout-subtotal">₦ 67,000.00</span>
+                        <span class="checkout-subtotal"></span>
                     </div>
                     <div class="summary-row">
                         <span>Delivery Fee</span>
-                        <span class="delivery-cost">₦ 2,500.00</span>
+                        <span class="delivery-cost"></span>
                     </div>
                     <div class="summary-row summary-total">
                         <span>Total</span>
-                        <span class="checkout-total">₦ 69,500.00</span>
+                        <span class="checkout-total"></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="success-modal" id="success-modal">
+        <div class="success-modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="success-title">Order Successful!</h2>
+            <p class="success-message">Thank you for your purchase.<br> Your order has been placed successfully.<br> Please check the email address provided above for delivery details.</p>
+            <button class="success-button" id="success-close-btn">Continue Shopping</button>
+        </div>
+    </div>
+
 
     
 
@@ -1031,9 +1044,9 @@
       });
     </script>
 
-    <script src="script.js"></script>
-    <script src="products.js"></script>
-    <script src="countdown.js"></script>
-    <script src="modal.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/modal.js"></script>
   </body>
 </html>

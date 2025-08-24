@@ -1,3 +1,4 @@
+// Main JavaScript implementation
 document.addEventListener("DOMContentLoaded", () => {
   // Load cart and wishlist from localStorage
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -161,28 +162,30 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSlides();
   startAutoPlay();
 
-  // Dark Mode Toggle (existing code, unchanged)
+  // Dark Mode Toggle
   const darkModeToggle = document.getElementById("dark-mode-toggle");
-  darkModeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    if (document.body.classList.contains("dark-mode")) {
-      localStorage.setItem("theme", "dark");
-      darkModeToggle.textContent = "🌙";
-    } else {
-      localStorage.setItem("theme", "light");
-      darkModeToggle.textContent = "💡";
-    }
-  });
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        darkModeToggle.textContent = "🌙";
+      } else {
+        localStorage.setItem("theme", "light");
+        darkModeToggle.textContent = "💡";
+      }
+    });
 
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-    darkModeToggle.textContent = "🌙";
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+      darkModeToggle.textContent = "🌙";
+    }
   }
 });
 
+// Mobile menu functionality
 document.addEventListener("DOMContentLoaded", function () {
-  // Mobile menu functionality
   const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
   const mobileMenu = document.querySelector(".nav-mobile");
 
@@ -221,6 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Product and cart functionality
 document.addEventListener("DOMContentLoaded", function () {
   // Load cart and wishlist from localStorage
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -230,13 +234,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const stateDeliveryPrices = {
     Abia: 1500,
     Adamawa: 2000,
-    AkwaIbom: 1800,
+    "Akwa Ibom": 1800,
     Anambra: 1600,
     Bauchi: 2200,
     Bayelsa: 1900,
     Benue: 1700,
     Borno: 2500,
-    CrossRiver: 1700,
+    "Cross River": 1700,
     Delta: 1600,
     Ebonyi: 1700,
     Edo: 1600,
@@ -267,9 +271,9 @@ document.addEventListener("DOMContentLoaded", function () {
     "FCT Abuja": 1500,
   };
 
-  //product data in Naira (₦)
+  // Product data
   const products = {
-    men: [
+     men: [
       {
         id: "m1",
         name: "Men's Classic T-Shirt",
@@ -802,6 +806,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const wishlistModal = document.querySelector(".wishlist-modal-container");
   const quickViewModal = document.querySelector(".quick-view-modal-container");
   const checkoutModal = document.querySelector(".checkout-modal-container");
+  const successModal = document.getElementById("success-modal");
+  const successCloseBtn = document.getElementById("success-close-btn");
 
   // Tab Elements
   const tabBtns = document.querySelectorAll(".tab-btn");
@@ -916,7 +922,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Event Delegation for Product Cards (since they're dynamically loaded)
+  // Event Delegation for Product Cards
   document.addEventListener("click", function (e) {
     // Wishlist button click
     if (e.target.closest(".product-actions .wishlist-btn")) {
@@ -1087,12 +1093,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateWishlistCount() {
-    navWishlistCount.textContent = wishlist.length;
+    if (navWishlistCount) {
+      navWishlistCount.textContent = wishlist.length;
+    }
   }
 
   function updateCartCount() {
-    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-    navCartCount.textContent = totalItems;
+    if (navCartCount) {
+      const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+      navCartCount.textContent = totalItems;
+    }
   }
 
   // Initialize wishlist and cart modal
@@ -1130,8 +1140,19 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.overflow = "";
   }
 
+  // Show success modal
+  function showSuccessModal() {
+    successModal.classList.add("active");
+  }
+
+  function closeSuccessModal() {
+    successModal.classList.remove("active");
+  }
+
   function updateWishlistModal() {
     const wishlistItemsContainer = document.querySelector(".wishlist-items");
+    if (!wishlistItemsContainer) return;
+
     wishlistItemsContainer.innerHTML = "";
 
     if (wishlist.length === 0) {
@@ -1192,6 +1213,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const cartItemsContainer = document.querySelector(".cart-items");
     const cartTotal = document.querySelector(".total-amount");
     const checkoutBtn = document.querySelector(".checkout-btn");
+
+    if (!cartItemsContainer || !cartTotal || !checkoutBtn) return;
+
     cartItemsContainer.innerHTML = "";
 
     if (cart.length === 0) {
@@ -1203,7 +1227,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let total = 0;
-
     cart.forEach((item) => {
       const itemTotal = item.price * item.quantity;
       total += itemTotal;
@@ -1285,20 +1308,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
-    document
-      .querySelector(".checkout-btn")
-      .addEventListener("click", openCheckoutModal);
-  }
 
-  function openCheckoutModal() {
-    updateCheckoutModal();
-    document.querySelector(".checkout-modal-container").style.display = "flex";
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeCheckoutModal() {
-    document.querySelector(".checkout-modal-container").style.display = "none";
-    document.body.style.overflow = "";
+    // Add event listener to checkout button
+    const cartCheckoutBtn = document.querySelector(".checkout-btn");
+    if (cartCheckoutBtn) {
+      cartCheckoutBtn.addEventListener("click", openCheckoutModal);
+    }
   }
 
   function updateCheckoutModal() {
@@ -1308,6 +1323,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const deliveryCostElement = document.querySelector(".delivery-cost");
     const totalElement = document.querySelector(".checkout-total");
     const transferAmountElement = document.querySelector("#transfer-amount");
+    const completeOrderBtn = document.querySelector("#complete-order-btn");
+
+    if (
+      !checkoutItemsContainer ||
+      !subtotalElement ||
+      !deliverySelect ||
+      !deliveryCostElement ||
+      !totalElement ||
+      !transferAmountElement
+    )
+      return;
 
     checkoutItemsContainer.innerHTML = "";
 
@@ -1326,11 +1352,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const checkoutItem = document.createElement("div");
       checkoutItem.className = "checkout-item";
       checkoutItem.innerHTML = `
-      <div style="display: flex; justify-content: space-between;">
-        <span>${item.name} x ${item.quantity}</span>
-        <span>${formatPrice(itemTotal)}</span>
-      </div>
-    `;
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>${item.name} x ${item.quantity}</span>
+                            <span>${formatPrice(itemTotal)}</span>
+                        </div>
+                    `;
       checkoutItemsContainer.appendChild(checkoutItem);
     });
 
@@ -1354,15 +1380,48 @@ document.addEventListener("DOMContentLoaded", function () {
         const deliveryCost = stateDeliveryPrices[selectedState];
         deliveryCostElement.textContent = formatPrice(deliveryCost);
         totalElement.textContent = formatPrice(subtotal + deliveryCost);
+        transferAmountElement.textContent = formatPrice(
+          subtotal + deliveryCost
+        );
       } else {
         deliveryCostElement.textContent = formatPrice(0);
         totalElement.textContent = formatPrice(subtotal);
+        transferAmountElement.textContent = formatPrice(subtotal);
       }
     });
 
     // Initialize with no delivery cost
     deliveryCostElement.textContent = formatPrice(0);
     totalElement.textContent = formatPrice(subtotal);
+    transferAmountElement.textContent = formatPrice(subtotal);
+
+    // Add event listener to complete order button
+    if (completeOrderBtn) {
+      completeOrderBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const state = deliverySelect.value;
+
+        if (!state) {
+          alert("Please select your state for delivery");
+          return;
+        }
+
+        // Calculate totals
+        const deliveryCost = stateDeliveryPrices[state] || 0;
+        const total = subtotal + deliveryCost;
+
+        // Show success modal
+        closeCheckoutModal();
+        showSuccessModal();
+
+        // Clear cart after successful order
+        cart = [];
+        updateCartCount();
+        updateCartModal();
+        saveToLocalStorage();
+      });
+    }
   }
 
   // Handle checkout form submission
@@ -1386,26 +1445,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const deliveryCost = stateDeliveryPrices[state] || 0;
     const total = subtotal + deliveryCost;
 
-    // In a real implementation, you would process the order here
-    // For this example, we'll just show a confirmation
-    alert(
-      `Order placed successfully!\n\nSubtotal: ${formatPrice(
-        subtotal
-      )}\nDelivery: ${formatPrice(deliveryCost)}\nTotal: ${formatPrice(
-        total
-      )}\n\nPlease transfer ${formatPrice(
-        total
-      )} to:\nBank: FashHub Bank\nAccount: 0123456789\nAccount Name: FashHub Enterprises\n\nAfter payment, send proof to payment@fashhub.ng`
-    );
+    // Show success modal
+    closeCheckoutModal();
+    showSuccessModal();
 
     // Clear cart after successful order
     cart = [];
     updateCartCount();
     updateCartModal();
     saveToLocalStorage();
-
-    // Close the checkout modal
-    closeCheckoutModal();
   }
 
   // Initialize counts
@@ -1413,48 +1461,57 @@ document.addEventListener("DOMContentLoaded", function () {
   updateCartCount();
 
   // Add event listeners for modals
-  navWishlistBtn.addEventListener("click", openWishlistModal);
-  navCartBtn.addEventListener("click", openCartModal);
+  if (navWishlistBtn) {
+    navWishlistBtn.addEventListener("click", openWishlistModal);
+  }
+
+  if (navCartBtn) {
+    navCartBtn.addEventListener("click", openCartModal);
+  }
 
   document
     .querySelector(".close-wishlist-modal")
-    .addEventListener("click", closeWishlistModal);
+    ?.addEventListener("click", closeWishlistModal);
   document
     .querySelector(".wishlist-modal-overlay")
-    .addEventListener("click", closeWishlistModal);
+    ?.addEventListener("click", closeWishlistModal);
 
   document
     .querySelector(".close-cart-modal")
-    .addEventListener("click", closeCartModal);
+    ?.addEventListener("click", closeCartModal);
   document
     .querySelector(".cart-modal-overlay")
-    .addEventListener("click", closeCartModal);
+    ?.addEventListener("click", closeCartModal);
 
   document
     .querySelector(".close-checkout-modal")
-    .addEventListener("click", closeCheckoutModal);
+    ?.addEventListener("click", closeCheckoutModal);
   document
     .querySelector(".checkout-modal-overlay")
-    .addEventListener("click", closeCheckoutModal);
+    ?.addEventListener("click", closeCheckoutModal);
 
   document
-    .querySelector(".checkout-btn")
-    .addEventListener("click", openCheckoutModal);
-  document
     .querySelector(".checkout-form")
-    .addEventListener("submit", handleCheckoutSubmit);
+    ?.addEventListener("submit", handleCheckoutSubmit);
+
+  // Success modal event listener
+  if (successCloseBtn) {
+    successCloseBtn.addEventListener("click", closeSuccessModal);
+  }
 
   // Close modals with Escape key
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
-      if (wishlistModal.style.display === "flex") closeWishlistModal();
-      if (cartModal.style.display === "flex") closeCartModal();
-      if (quickViewModal.style.display === "block") closeQuickViewModal();
-      if (checkoutModal.style.display === "flex") closeCheckoutModal();
+      if (wishlistModal?.style.display === "flex") closeWishlistModal();
+      if (cartModal?.style.display === "flex") closeCartModal();
+      if (quickViewModal?.style.display === "block") closeQuickViewModal();
+      if (checkoutModal?.style.display === "flex") closeCheckoutModal();
+      closeSuccessModal();
     }
   });
 });
 
+// FAQ functionality
 document.addEventListener("DOMContentLoaded", function () {
   const faqItems = document.querySelectorAll(".faq-item");
 
@@ -1473,7 +1530,4 @@ document.addEventListener("DOMContentLoaded", function () {
       item.classList.toggle("active");
     });
   });
-
-  // Optional: Open first FAQ by default
-  // faqItems[0].classList.add('active');
 });

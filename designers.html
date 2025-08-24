@@ -1,0 +1,773 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashub</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/favicon.png" style="border-radius: 50px"
+        /></a>
+      </div>
+
+      <nav class="nav-desktop">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="#collections">Collections</a></li>
+          <li class="nav-item"><a href="designers.html">Designers</a></li>
+          <li class="nav-item"><a href="#resellers">Resellers</a></li>
+          <li class="nav-item"><a href="#virtual-show">Fashion Show</a></li>
+          <li class="nav-item">
+            <a href="#outfit-designer">Outfit Designer</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="wishlist-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="#4caf50"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+            />
+          </svg>
+          <span class="wishlist-count">0</span>
+        </button>
+        <button class="cart-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="#4caf50"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            />
+          </svg>
+          <span class="cart-count">0</span>
+        </button>
+        <button id="dark-mode-toggle" class="dark-mode-button">💡</button>
+        <button class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="nav-mobile">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="collections.html">Collections</a></li>
+          <li class="nav-item"><a href="#designers">Designers</a></li>
+          <li class="nav-item"><a href="#resellers">Resellers</a></li>
+          <li class="nav-item"><a href="#virtual-show">Fashion Show</a></li>
+          <li class="nav-item">
+            <a href="#outfit-designer">Outfit Designer</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero-banner">
+      <div class="banner-content">
+        <div class="designer-page-header">
+            <h1 class="designer-page-title">Fashion Designers</h1>
+            <p class="designer-page-subtitle">Discover talented designers from around the world. Explore international icons, mainstream favorites, and local emerging talents.</p>
+            
+            <div class="designer-category-tabs">
+                <div class="designer-tab active">All Designers</div>
+                <div class="designer-tab">International</div>
+                <div class="designer-tab">Mainstream</div>
+                <div class="designer-tab">Local</div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-container">
+      <div class="ticker-track">
+        <div class="ticker-item">
+          ✨ New Arrivals | Summer Collection Live Now ✨
+        </div>
+        <div class="ticker-item">
+          🔥 20% Off All Dresses - Limited Time Offer 🔥
+        </div>
+        <div class="ticker-item">⭐ Celebrity Stylist Picks This Week ⭐</div>
+        <div class="ticker-item">
+          🚀 Free Express Shipping on Orders Over N100,000 🚀
+        </div>
+        <div class="ticker-item">
+          🎉 Follow @FashHub for Daily Style Inspiration 🎉
+        </div>
+      </div>
+    </div>
+
+        <!-- International Designers -->
+    <section class="designer-category-section">
+        <div class="container">
+             <div class="section-header">
+                <span class="section-subtitle">Fashion Brands</span>
+                <h2 class="section-title" style="color: #9c88ff">International Brands</h2>
+            </div>
+            
+            <div class="designer-grid">
+                <!-- Brand 1 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Chanel-Logo.png" alt="Chanel">
+                    </div>
+                    <h3 class="designer-name">Chanel</h3>
+                    <div class="designer-origin">Paris, France</div>
+                </a>
+                
+                <!-- Brand 2 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Gucci-Logo.png" alt="Gucci">
+                    </div>
+                    <h3 class="designer-name">Gucci</h3>
+                    <div class="designer-origin">Florence, Italy</div>
+                </a>
+                
+                <!-- Brand 3 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Louis-Vuitton-Logo.png" alt="Louis Vuitton">
+                    </div>
+                    <h3 class="designer-name">Louis Vuitton</h3>
+                    <div class="designer-origin">Paris, France</div>
+                </a>
+                
+                <!-- Brand 4 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Prada-Logo.png" alt="Prada">
+                    </div>
+                    <h3 class="designer-name">Prada</h3>
+                    <div class="designer-origin">Milan, Italy</div>
+                </a>
+                
+                <!-- Brand 5 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Hermes-Logo.png" alt="Hermès">
+                    </div>
+                    <h3 class="designer-name">Hermès</h3>
+                    <div class="designer-origin">Paris, France</div>
+                </a>
+                
+                <!-- Brand 6 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Dior-Logo.png" alt="Dior">
+                    </div>
+                    <h3 class="designer-name">Dior</h3>
+                    <div class="designer-origin">Paris, France</div>
+                </a>
+                
+                <!-- Brand 7 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Balenciaga-Logo.png" alt="Balenciaga">
+                    </div>
+                    <h3 class="designer-name">Balenciaga</h3>
+                    <div class="designer-origin">Paris, France</div>
+                </a>
+                
+                <!-- Brand 8 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Fendi-Logo.png" alt="Fendi">
+                    </div>
+                    <h3 class="designer-name">Fendi</h3>
+                    <div class="designer-origin">Rome, Italy</div>
+                </a>
+                
+                <!-- Brand 9 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Versace-Logo.png" alt="Versace">
+                    </div>
+                    <h3 class="designer-name">Versace</h3>
+                    <div class="designer-origin">Milan, Italy</div>
+                </a>
+                
+                <!-- Brand 10 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Burberry-Logo.png" alt="Burberry">
+                    </div>
+                    <h3 class="designer-name">Burberry</h3>
+                    <div class="designer-origin">London, UK</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Mainstream Designers -->
+    <section class="designer-category-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Fashion Brands</span>
+                <h2 class="section-title" style="color: #9c88ff">Mainstream Brands</h2>
+            </div>
+            
+            <div class="designer-grid">
+                <!-- Brand 1 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Zara-Logo.png" alt="Zara">
+                    </div>
+                    <h3 class="designer-name">Zara</h3>
+                    <div class="designer-origin">Spain</div>
+                </a>
+                
+                <!-- Brand 2 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/HM-Logo.png" alt="H&M">
+                    </div>
+                    <h3 class="designer-name">H&M</h3>
+                    <div class="designer-origin">Sweden</div>
+                </a>
+                
+                <!-- Brand 3 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/09/Uniqlo-Logo.png" alt="Uniqlo">
+                    </div>
+                    <h3 class="designer-name">Uniqlo</h3>
+                    <div class="designer-origin">Japan</div>
+                </a>
+                
+                <!-- Brand 4 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Gap-Logo.png" alt="Gap">
+                    </div>
+                    <h3 class="designer-name">Gap</h3>
+                    <div class="designer-origin">USA</div>
+                </a>
+                
+                <!-- Brand 5 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Topshop-Logo.png" alt="Topshop">
+                    </div>
+                    <h3 class="designer-name">Topshop</h3>
+                    <div class="designer-origin">UK</div>
+                </a>
+                
+                <!-- Brand 6 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Forever-21-Logo.png" alt="Forever 21">
+                    </div>
+                    <h3 class="designer-name">Forever 21</h3>
+                    <div class="designer-origin">USA</div>
+                </a>
+                
+                <!-- Brand 7 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Mango-Logo.png" alt="Mango">
+                    </div>
+                    <h3 class="designer-name">Mango</h3>
+                    <div class="designer-origin">Spain</div>
+                </a>
+                
+                <!-- Brand 8 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Urban-Outfitters-Logo.png" alt="Urban Outfitters">
+                    </div>
+                    <h3 class="designer-name">Urban Outfitters</h3>
+                    <div class="designer-origin">USA</div>
+                </a>
+                
+                <!-- Brand 9 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Abercrombie-Fitch-Logo.png" alt="Abercrombie & Fitch">
+                    </div>
+                    <h3 class="designer-name">Abercrombie & Fitch</h3>
+                    <div class="designer-origin">USA</div>
+                </a>
+                
+                <!-- Brand 10 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/04/Hollister-Logo.png" alt="Hollister">
+                    </div>
+                    <h3 class="designer-name">Hollister</h3>
+                    <div class="designer-origin">USA</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Local Designers -->
+    <section class="designer-category-section">
+        <div class="container">
+           <div class="section-header">
+                <span class="section-subtitle">Fashion Brands</span>
+                <h2 class="section-title" style="color: #9c88ff">Local Brands</h2>
+            </div>
+            
+            <div class="designer-grid">
+                <!-- Brand 1 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://via.placeholder.com/150/5f27cd/ffffff?text=O+" alt="Orange Culture">
+                    </div>
+                    <h3 class="designer-name">Orange Culture</h3>
+                    <div class="designer-origin">Lagos, Nigeria</div>
+                </a>
+                
+                <!-- Brand 2 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://via.placeholder.com/150/ff6b6b/ffffff?text=MAKI" alt="Maki Oh">
+                    </div>
+                    <h3 class="designer-name">Maki Oh</h3>
+                    <div class="designer-origin">Lagos, Nigeria</div>
+                </a>
+                
+                <!-- Brand 3 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://via.placeholder.com/150/5f27cd/ffffff?text=TI+AM" alt="Tiffany Amber">
+                    </div>
+                    <h3 class="designer-name">Tiffany Amber</h3>
+                    <div class="designer-origin">Lagos, Nigeria</div>
+                </a>
+                
+                <!-- Brand 4 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://via.placeholder.com/150/ff6b6b/ffffff?text=DS" alt="Deola Sagoe">
+                    </div>
+                    <h3 class="designer-name">Deola Sagoe</h3>
+                    <div class="designer-origin">Lagos, Nigeria</div>
+                </a>
+                
+                <!-- Brand 5 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://via.placeholder.com/150/5f27cd/ffffff?text=Lisa" alt="Lisa Folawiyo">
+                    </div>
+                    <h3 class="designer-name">Lisa Folawiyo</h3>
+                    <div class="designer-origin">Lagos, Nigeria</div>
+                </a>
+                
+                <!-- Brand 6 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://via.placeholder.com/150/ff6b6b/ffffff?text=Grey" alt="Grey">
+                    </div>
+                    <h3 class="designer-name">Grey</h3>
+                    <div class="designer-origin">Lagos, Nigeria</div>
+                </a>
+                
+                <!-- Brand 7 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://via.placeholder.com/150/5f27cd/ffffff?text=TOJU" alt="Toju Foyeh">
+                    </div>
+                    <h3 class="designer-name">Toju Foyeh</h3>
+                    <div class="designer-origin">Lagos, Nigeria</div>
+                </a>
+                
+                <!-- Brand 8 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://via.placeholder.com/150/ff6b6b/ffffff?text=BA" alt="Bridget Awosika">
+                    </div>
+                    <h3 class="designer-name">Bridget Awosika</h3>
+                    <div class="designer-origin">Lagos, Nigeria</div>
+                </a>
+                
+                <!-- Brand 9 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://via.placeholder.com/150/5f27cd/ffffff?text=LDSA" alt="Lanre da Silva Ajayi">
+                    </div>
+                    <h3 class="designer-name">Lanre da Silva Ajayi</h3>
+                    <div class="designer-origin">Lagos, Nigeria</div>
+                </a>
+                
+                <!-- Brand 10 -->
+                <a href="#" class="designer-card">
+                    <div class="designer-thumbnail">
+                        <img src="https://via.placeholder.com/150/ff6b6b/ffffff?text=AB" alt="Ade Bakare">
+                    </div>
+                    <h3 class="designer-name">Ade Bakare</h3>
+                    <div class="designer-origin">Lagos, Nigeria</div>
+                </a>
+            </div>
+        </section>
+
+        <footer class="vibrant-footer">
+      <div class="footer-wave"></div>
+
+      <div class="footer-container">
+        <div class="footer-grid">
+          <!-- Quick Links -->
+          <div class="footer-column">
+            <h3 class="footer-title">Explore</h3>
+            <ul class="footer-links">
+              <li><a href="#">New Arrivals</a></li>
+              <li><a href="#">Trending Styles</a></li>
+              <li><a href="#">Designer Collections</a></li>
+              <li><a href="#">Seasonal Lookbooks</a></li>
+              <li><a href="#">Limited Editions</a></li>
+            </ul>
+          </div>
+
+          <!-- Customer Service -->
+          <div class="footer-column">
+            <h3 class="footer-title">Support</h3>
+            <ul class="footer-links">
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns & Exchanges</a></li>
+              <li><a href="#">Size Guide</a></li>
+            </ul>
+          </div>
+
+          <!-- About -->
+          <div class="footer-column">
+            <h3 class="footer-title">Company</h3>
+            <ul class="footer-links">
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Sustainability</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="footer-column newsletter-column">
+            <h3 class="footer-title">Stay Connected</h3>
+            <p class="newsletter-text">
+              Subscribe for exclusive offers, styling tips, and early access to
+              new collections.
+            </p>
+
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your email address" required />
+              <button type="submit">Subscribe</button>
+            </form>
+
+            <div class="social-links">
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Pinterest"
+                ><i class="fab fa-pinterest-p"></i
+              ></a>
+              <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="payment-methods">
+            <img src="https://via.placeholder.com/40x25?text=Visa" alt="Visa" />
+            <img
+              src="https://via.placeholder.com/40x25?text=MC"
+              alt="Mastercard"
+            />
+            <img
+              src="https://via.placeholder.com/40x25?text=PayPal"
+              alt="PayPal"
+            />
+            <img
+              src="https://via.placeholder.com/40x25?text=ApplePay"
+              alt="Apple Pay"
+            />
+          </div>
+
+          <div class="copyright">
+            <p>&copy; 2025 Fashub.com All rights reserved.</p>
+            <div class="legal-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Settings</a>
+            </div>
+          </div>
+
+          <div class="tech-credit">
+            <p>Powered by <span class="bellatech">BellaTECH NG</span></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal-container">
+      <div class="quick-view-modal-overlay"></div>
+      <div class="quick-view-modal">
+        <button class="close-quick-view-modal">&times;</button>
+        <div class="quick-view-content">
+          <!-- Content will be loaded dynamically -->
+        </div>
+      </div>
+    </div>
+
+   <!-- Wishlist Modal -->
+    <div class="wishlist-modal-container">
+        <div class="wishlist-modal-overlay" onclick="closeModal('wishlist')"></div>
+        <div class="wishlist-modal-content">
+            <button class="close-wishlist-modal" onclick="closeModal('wishlist')">&times;</button>
+            <h2><i class="fas fa-heart"></i> Your Wishlist</h2>
+            <div class="wishlist-items">
+                <div class="empty-state">
+                    <i class="fas fa-heart"></i>
+                    <p>Your wishlist is empty</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal-container">
+        <div class="cart-modal-overlay" onclick="closeModal('cart')"></div>
+        <div class="cart-modal-content">
+            <button class="close-cart-modal" onclick="closeModal('cart')">&times;</button>
+            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+            <div class="cart-items">
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name"></div>
+                        <div class="cart-item-price"></div>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
+                    <div class="remove-item">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                </div>
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name"></div>
+                        <div class="cart-item-price"></div>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
+                    <div class="remove-item">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-total">
+                <p>Total: ₦ <span class="total-amount"></span></p>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal-container" style="display: none;">
+        <div class="checkout-modal-overlay" onclick="closeModal('checkout')"></div>
+        <div class="checkout-modal">
+            <button class="close-checkout-modal" onclick="closeModal('checkout')">&times;</button>
+            <h2><i class="fas fa-credit-card"></i> Complete Your Order</h2>
+            
+            <div class="checkout-content">
+                <div class="checkout-form">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <h3>Delivery Information</h3>
+                    <div class="form-group">
+                        <label for="address">Delivery Address</label>
+                        <input type="text" id="address" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <select id="state" class="form-control" required>
+                                <option value="">Select your state</option>
+                                <option value="Lagos">Lagos</option>
+                                <option value="Abuja">Abuja</option>
+                                <option value="Rivers">Rivers</option>
+                                <option value="Kano">Kano</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="bank-details">
+                        <h3><i class="fas fa-university"></i> Bank Transfer Details</h3>
+                        <div class="bank-info">
+                            <span class="label">Bank Name:</span>
+                            <span>FashHub Bank</span>
+                        </div>
+                        <div class="bank-info">
+                            <span class="label">Account Number:</span>
+                            <span>0123456789</span>
+                        </div>
+                        <div class="bank-info">
+                            <span class="label">Account Name:</span>
+                            <span>FashHub Enterprises</span>
+                        </div>
+                        <div class="bank-info">
+                            <span class="label">Amount:</span>
+                            <span id="transfer-amount"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="proof">Upload Proof of Payment</label>
+                        <input type="file" id="proof" class="form-control">
+                    </div>
+                    
+                    <button type="submit" class="btn checkout-form" id="complete-order-btn">Complete Order</button>
+                </div>
+                
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div class="checkout-items">
+                        <div class="checkout-item">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="checkout-item">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span class="checkout-subtotal"></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span class="delivery-cost"></span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <span class="checkout-total"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="success-modal" id="success-modal">
+        <div class="success-modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="success-title">Order Successful!</h2>
+            <p class="success-message">Thank you for your purchase.<br> Your order has been placed successfully.<br> Please check the email address provided above for delivery details.</p>
+            <button class="success-button" id="success-close-btn">Continue Shopping</button>
+        </div>
+    </div>
+    
+
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        // Simple tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.designer-tab');
+            const sections = document.querySelectorAll('.designer-category-section');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // For demonstration purposes, we'll just scroll to the first section
+                    // In a real implementation, you would filter/show the appropriate section
+                    if (this.textContent !== 'All Brands') {
+                        document.querySelector('.designer-category-section').scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add hover animation to designer cards
+            const cards = document.querySelectorAll('.designer-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            darkModeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
