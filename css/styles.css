@@ -3254,7 +3254,8 @@ body {
   margin-top: 3rem;
   margin-bottom: 3rem;
   padding: 2rem 1rem;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("images/bg.png");
   border-radius: 16px;
   box-shadow: var(--shadow);
 }
@@ -3541,6 +3542,349 @@ body {
 .designer-category-section {
   animation: fadeIn 0.6s ease-out;
 }
+
+/* Nigerian Designers */
+.nds_designers_section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--bg);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.nds_header_container {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.nds_main_title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+  position: relative;
+  display: inline-block;
+}
+
+.nds_main_title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  border-radius: 2px;
+}
+
+.nds_subtitle_text {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.nds_state_tabs_wrapper {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.nds_scroll_controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.nds_scroll_button {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nds_scroll_button:hover {
+  background: var(--primary);
+  transform: scale(1.1);
+}
+
+.nds_state_tabs_list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 10px 5px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+}
+
+.nds_state_tabs_list::-webkit-scrollbar {
+  display: none;
+}
+
+.nds_state_tab_item {
+  flex: 0 0 auto;
+  padding: 12px 20px;
+  background: var(--bg-secondary);
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  border: 2px solid transparent;
+}
+
+.nds_state_tab_item.active {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(95, 39, 205, 0.3);
+}
+
+.nds_state_tab_item:hover:not(.active) {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.nds_designers_display {
+  min-height: 500px;
+}
+
+.nds_state_heading {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px dashed var(--border);
+}
+
+.nds_lga_group {
+  margin-bottom: 2rem;
+}
+
+.nds_lga_heading {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  padding-left: 10px;
+  border-left: 4px solid var(--primary);
+}
+
+.nds_designers_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.nds_designer_card {
+  background: var(--bg);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+}
+
+.nds_designer_card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.nds_designer_image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.nds_designer_details {
+  padding: 1.5rem;
+}
+
+.nds_designer_name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--secondary);
+}
+
+.nds_designer_location {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.nds_designer_stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.nds_stat_item {
+  text-align: center;
+}
+
+.nds_stat_value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.nds_stat_label {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.nds_designer_hover_panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(95, 39, 205, 0.95) 0%,
+    rgba(255, 107, 107, 0.95) 100%
+  );
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition);
+  pointer-events: none;
+}
+
+.nds_designer_card:hover .nds_designer_hover_panel {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nds_hover_title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.nds_designer_bio {
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.nds_profile_button {
+  display: inline-block;
+  padding: 8px 20px;
+  background: white;
+  color: var(--secondary);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.nds_profile_button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nds_empty_state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-light);
+}
+
+.nds_empty_state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--border);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .nds_designers_grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nds_main_title {
+    font-size: 2.2rem;
+  }
+
+  .nds_designers_grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .nds_designers_section {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .nds_designers_section {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .nds_main_title {
+    font-size: 1.8rem;
+  }
+
+  .nds_subtitle_text {
+    font-size: 1rem;
+  }
+
+  .nds_designers_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nds_state_tab_item {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  .nds_state_heading {
+    font-size: 1.6rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nds_designers_display {
+  animation: fadeIn 0.5s ease-out;
+}
+
 /* Vibrant Footer Styles */
 .vibrant-footer {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);

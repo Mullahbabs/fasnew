@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       title: "Discover Your Signature Style",
       subtitle: "Unleash your creativity with our diverse collections.",
-      image: "images/bg.png",
+      image: "images/bg1.jpg",
     },
     {
       title: "Connect with Local Artisans",

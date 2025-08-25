@@ -84,16 +84,40 @@
 
     <section class="hero-banner">
       <div class="banner-content">
-        <div class="designer-page-header">
-            <h1 class="designer-page-title">Fashion Designers</h1>
-            <p class="designer-page-subtitle">Discover talented designers from around the world. Explore international icons, mainstream favorites, and local emerging talents.</p>
-            
-            <div class="designer-category-tabs">
-                <div class="designer-tab active">All Designers</div>
-                <div class="designer-tab">International</div>
-                <div class="designer-tab">Mainstream</div>
-                <div class="designer-tab">Local</div>
-            </div>
+        <h1 class="banner-title">Discover Your Perfect Style</h1>
+        <p class="banner-subtitle">
+          Browse thousands of fashion items from top designers worldwide
+        </p>
+
+        <div class="category-search">
+          <div class="search-container">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search for dresses, shoes, accessories..."
+            />
+            <select class="search-categories">
+              <option value="">All Categories</option>
+              <option value="women">Women's Fashion</option>
+              <option value="men">Men's Fashion</option>
+              <option value="shoes">Shoes & Footwear</option>
+              <option value="accessories">Accessories</option>
+              <option value="jewelry">Jewelry</option>
+              <option value="bags">Bags & Purses</option>
+              <option value="activewear">Activewear</option>
+              <option value="vintage">Vintage</option>
+            </select>
+            <button class="search-button">Search</button>
+          </div>
+
+          <div class="popular-categories">
+            <span class="category-tag">Summer Collection</span>
+            <span class="category-tag">Designer Dresses</span>
+            <span class="category-tag">Sneakers</span>
+            <span class="category-tag">Handbags</span>
+            <span class="category-tag">Watches</span>
+            <span class="category-tag">Jeans</span>
+          </div>
         </div>
       </div>
     </section>
@@ -115,6 +139,86 @@
         </div>
       </div>
     </div>
+
+     <div class="designer-page-container">
+        <header class="designer-page-header">
+            <h1 class="designer-page-title">Fashion Brands</h1>
+            <p class="designer-page-subtitle">Discover iconic fashion brands from around the world. Explore international luxury houses, mainstream favorites, and local emerging labels.</p>
+            
+            <div class="designer-category-tabs">
+                <div class="designer-tab active">All Brands</div>
+                <div class="designer-tab">International</div>
+                <div class="designer-tab">Mainstream</div>
+                <div class="designer-tab">Local</div>
+            </div>
+        </header>
+    </div>
+    
+    <section class="designer-week-section">
+    <div class="designer-week-container">
+      <div class="section-header">
+        <span class="section-subtitle">Featured Creator</span>
+        <h2 class="section-title" style="color: #9c88ff">Designer of the Week</h2>
+    <!-- Text Content -->
+    <div class="designer-week-content">
+        <div class="week-badge">This Week's Spotlight</div>
+      </div>
+
+      <div class="designer-details">
+        <h3 class="designer-name">Ahmed Hadiza</h3>
+        <p class="designer-bio">
+          Kaduna-born, Abuja-based designer blending traditional African textiles 
+          with contemporary haute couture. Her latest collection features innovative 
+          zero-waste patterns and hand-dyed organic fabrics.
+        </p>
+        
+        <div class="designer-stats">
+          <div class="stat-item">
+            <div class="stat-value">9.4</div>
+            <div class="stat-label">Avg. Rating</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">24</div>
+            <div class="stat-label">Collections</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">15</div>
+            <div class="stat-label">Awards</div>
+          </div>
+        </div>
+
+        <div class="designer-actions">
+          <button class="btn-primary">
+            View Collection
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <button class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" stroke="currentColor">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Follow
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Content -->
+    <div class="designer-week-image">
+      <div class="image-wrapper">
+        <img src="images/hadiza.jpeg" alt="Ahmed Hadiza's Collection" class="main-image">
+        
+        <div class="image-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#FFD700" stroke="#000">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"></path>
+          </svg>
+          <span>Featured</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         <!-- International Designers -->
     <section class="designer-category-section">
@@ -419,7 +523,37 @@
             </div>
         </section>
 
-        <footer class="vibrant-footer">
+        <section class="nds_designers_section">
+        <div class="container">
+            <div class="section-header">
+            <span class="section-subtitle">Nigerian Designers</span>
+            <h2 class="section-title" style="color: #9c88ff">Discover talented fashion designers across all 36 states and the FCT</h2>
+        </div>
+
+        <div class="nds_state_tabs_wrapper">
+            <div class="nds_scroll_controls">
+                <button class="nds_scroll_button" id="scrollLeft">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nds_scroll_button" id="scrollRight">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="nds_state_tabs_list" id="statesTabs">
+                <!-- States will be added here by JavaScript -->
+            </div>
+        </div>
+
+        <div class="nds_designers_display" id="designersContainer">
+            <div class="nds_empty_state">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Select a state to view designers</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="vibrant-footer">
       <div class="footer-wave"></div>
 
       <div class="footer-container">
@@ -770,9 +904,10 @@
         });
     </script>
 
+      
     <script src="js/script.js"></script>
     <script src="js/products.js"></script>
     <script src="js/countdown.js"></script>
-    <script src="js/modal.js"></script>
+    <script src="js/ndesigners.js"></script>
 </body>
 </html>
