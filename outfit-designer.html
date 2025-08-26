@@ -3,29 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Outfit Design | FashHub</title>
+    <title>Outfit Designer | FashHub</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
       :root {
-        --primary: #ff6b6b;
-        --secondary: #5f27cd;
-        --accent: #48dbfb;
-        --success: #28a745;
-        --text: #333;
-        --text-light: #666;
-        --bg: #fff;
-        --bg-secondary: #f8f9fa;
-        --border: #e0e0e0;
-        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        --transition: all 0.3s ease;
+        --od-primary: #ff6b6b;
+        --od-secondary: #5f27cd;
+        --od-accent: #48dbfb;
+        --od-success: #1dd1a1;
+        --od-text: #333;
+        --od-text-light: #666;
+        --od-bg: #fff;
+        --od-bg-secondary: #f8f9fa;
+        --od-border: #e0e0e0;
+        --od-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --od-transition: all 0.3s ease;
       }
 
-      body {
+      .od-body {
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        color: var(--text);
+        color: var(--od-text);
         line-height: 1.6;
         padding: 20px;
         min-height: 100vh;
@@ -37,9 +37,10 @@
         max-width: 1280px;
         margin: 0 auto;
         padding: 2rem;
-        background: var(--bg);
+        background: var(--od-bg);
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-out;
       }
 
       .od-header {
@@ -51,10 +52,9 @@
         font-size: 2.8rem;
         font-weight: 800;
         margin-bottom: 1rem;
-        color: var(--secondary);
+        color: var(--od-secondary);
         position: relative;
         display: inline-block;
-        font-family: "Helvetica Neue", Arial, sans-serif;
       }
 
       .od-title::after {
@@ -65,198 +65,214 @@
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background: linear-gradient(to right, var(--primary), var(--secondary));
+        background: linear-gradient(
+          to right,
+          var(--od-primary),
+          var(--od-secondary)
+        );
         border-radius: 2px;
       }
 
       .od-subtitle {
         font-size: 1.2rem;
-        color: var(--text-light);
+        color: var(--od-text-light);
         max-width: 700px;
         margin: 0 auto;
-        font-family: "Helvetica Neue", Arial, sans-serif;
       }
 
-      .od-gender-selection {
+      .od-gender-selector {
         display: flex;
         justify-content: center;
-        gap: 1rem;
+        gap: 2rem;
         margin-bottom: 2rem;
       }
 
       .od-gender-btn {
-        padding: 12px 20px;
-        background: var(--bg-secondary);
-        border-radius: 50px;
+        padding: 1rem 2rem;
+        background: var(--od-bg-secondary);
+        border: 2px solid transparent;
+        border-radius: 12px;
         font-weight: 600;
         cursor: pointer;
-        transition: var(--transition);
-        border: 2px solid transparent;
-        font-family: "Helvetica Neue", Arial, sans-serif;
+        transition: var(--od-transition);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 120px;
+      }
+
+      .od-gender-btn i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
       }
 
       .od-gender-btn.active {
         background: linear-gradient(
           135deg,
-          var(--primary) 0%,
-          var(--secondary) 100%
+          var(--od-primary) 0%,
+          var(--od-secondary) 100%
         );
         color: white;
-        transform: translateY(-3px);
+        transform: translateY(-5px);
         box-shadow: 0 8px 20px rgba(95, 39, 205, 0.3);
       }
 
       .od-gender-btn:hover:not(.active) {
-        border-color: var(--primary);
-        transform: translateY(-2px);
+        border-color: var(--od-primary);
+        transform: translateY(-3px);
       }
 
-      .od-category-tabs {
+      .od-categories {
         display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 2rem;
         flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 2rem;
       }
 
       .od-category-btn {
-        padding: 12px 20px;
-        background: var(--bg-secondary);
+        padding: 0.8rem 1.5rem;
+        background: var(--od-bg-secondary);
+        border: 2px solid transparent;
         border-radius: 50px;
         font-weight: 600;
         cursor: pointer;
-        transition: var(--transition);
-        border: 2px solid transparent;
-        font-family: "Helvetica Neue", Arial, sans-serif;
+        transition: var(--od-transition);
       }
 
       .od-category-btn.active {
         background: linear-gradient(
           135deg,
-          var(--primary) 0%,
-          var(--secondary) 100%
+          var(--od-primary) 0%,
+          var(--od-secondary) 100%
         );
         color: white;
         transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(95, 39, 205, 0.3);
+        box-shadow: 0 5px 15px rgba(95, 39, 205, 0.3);
       }
 
       .od-category-btn:hover:not(.active) {
-        border-color: var(--primary);
+        border-color: var(--od-primary);
         transform: translateY(-2px);
       }
 
-      .od-style-selection {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-bottom: 2rem;
-      }
-
-      .od-style-card {
-        background: var(--bg-secondary);
-        border-radius: 15px;
-        padding: 1rem;
-        cursor: pointer;
-        transition: var(--transition);
-        text-align: center;
-        box-shadow: var(--shadow);
-      }
-
-      .od-style-card.active {
-        border: 2px solid var(--primary);
-        transform: translateY(-5px);
-      }
-
-      .od-style-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(95, 39, 205, 0.3);
-      }
-
-      .od-style-preview {
-        width: 100%;
-        height: 150px;
-        background: #eee;
-        margin-bottom: 0.5rem;
-        border-radius: 10px;
-      }
-
-      .od-style-name {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--secondary);
-      }
-
       .od-design-area {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 2rem;
         margin-bottom: 2rem;
       }
 
-      .od-avatar-preview {
-        flex: 1;
-        background: var(--bg-secondary);
+      .od-avatar-container {
+        background: var(--od-bg-secondary);
         border-radius: 15px;
-        padding: 1rem;
-        box-shadow: var(--shadow);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
 
-      .od-avatar-canvas {
-        width: 100%;
-        height: 400px;
-        border: 1px solid var(--border);
+      .od-avatar {
+        width: 300px;
+        height: 500px;
+        border: 1px solid var(--od-border);
         border-radius: 10px;
       }
 
-      .od-options-panel {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
+      .od-outfit-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 1rem;
+        margin-top: 1rem;
       }
 
-      .od-option-group {
-        background: var(--bg-secondary);
+      .od-outfit-option {
+        width: 100%;
+        height: 150px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: var(--od-transition);
+        border: 2px solid transparent;
+        position: relative;
+      }
+
+      .od-outfit-option:hover {
+        transform: scale(1.05);
+        border-color: var(--od-primary);
+      }
+
+      .od-outfit-option.selected {
+        border-color: var(--od-secondary);
+        box-shadow: 0 0 0 3px var(--od-primary);
+      }
+
+      .od-outfit-name {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        text-align: center;
+        padding: 5px;
+        font-size: 0.9rem;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      .od-customization-panel {
+        background: var(--od-bg-secondary);
         border-radius: 15px;
-        padding: 1rem;
-        box-shadow: var(--shadow);
+        padding: 2rem;
       }
 
-      .od-option-title {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-        color: var(--secondary);
-        font-family: "Helvetica Neue", Arial, sans-serif;
+      .od-panel-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--od-secondary);
+        text-align: center;
       }
 
       .od-color-picker {
-        display: flex;
-        gap: 0.5rem;
+        margin-bottom: 2rem;
       }
 
-      .od-color-swatch {
-        width: 30px;
-        height: 30px;
+      .od-color-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+
+      .od-color-option {
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         cursor: pointer;
-        transition: var(--transition);
+        transition: var(--od-transition);
         border: 2px solid transparent;
       }
 
-      .od-color-swatch.active {
-        border-color: var(--primary);
-        transform: scale(1.2);
+      .od-color-option:hover {
+        transform: scale(1.1);
       }
 
-      .od-color-swatch:hover {
-        transform: scale(1.1);
+      .od-color-option.selected {
+        border-color: var(--od-text);
+        box-shadow: 0 0 0 3px white;
+      }
+
+      .od-size-selector {
+        margin-bottom: 2rem;
       }
 
       .od-size-inputs {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
-        margin-top: 1rem;
       }
 
       .od-size-field {
@@ -267,13 +283,13 @@
       .od-size-label {
         font-size: 0.9rem;
         margin-bottom: 0.25rem;
-        color: var(--text-light);
+        color: var(--od-text-light);
       }
 
       .od-size-input {
         padding: 8px;
         border-radius: 8px;
-        border: 1px solid var(--border);
+        border: 1px solid var(--od-border);
         font-family: "Helvetica Neue", Arial, sans-serif;
       }
 
@@ -281,47 +297,55 @@
         display: flex;
         justify-content: center;
         gap: 1rem;
+        margin-top: 2rem;
       }
 
       .od-btn {
-        padding: 12px 24px;
+        padding: 0.8rem 1.5rem;
+        border: none;
         border-radius: 50px;
         font-weight: 600;
         cursor: pointer;
-        transition: var(--transition);
-        font-family: "Helvetica Neue", Arial, sans-serif;
+        transition: var(--od-transition);
       }
 
-      .od-save-btn {
-        background: var(--secondary);
+      .od-btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--od-primary) 0%,
+          var(--od-secondary) 100%
+        );
         color: white;
-        border: none;
       }
 
-      .od-save-btn:hover {
-        background: var(--primary);
-        transform: translateY(-2px);
+      .od-btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(95, 39, 205, 0.3);
       }
 
-      .od-order-btn {
-        background: var(--primary);
-        color: white;
-        border: none;
+      .od-btn-secondary {
+        background: white;
+        color: var(--od-text);
+        border: 1px solid var(--od-border);
       }
 
-      .od-order-btn:hover {
-        background: var(--secondary);
-        transform: translateY(-2px);
+      .od-btn-secondary:hover {
+        background: var(--od-bg-secondary);
+        transform: translateY(-3px);
+      }
+
+      .od-hidden {
+        display: none;
       }
 
       /* Responsive adjustments */
       @media (max-width: 768px) {
         .od-design-area {
-          flex-direction: column;
+          grid-template-columns: 1fr;
         }
 
-        .od-avatar-canvas {
-          height: 300px;
+        .od-avatar {
+          height: 400px;
         }
 
         .od-size-inputs {
@@ -330,23 +354,35 @@
       }
 
       @media (max-width: 480px) {
+        .od-body {
+          padding: 10px;
+        }
+
+        .od-container {
+          padding: 1rem;
+          border-radius: 15px;
+        }
+
         .od-title {
-          font-size: 2.2rem;
+          font-size: 1.8rem;
         }
 
-        .od-gender-btn,
-        .od-category-btn {
-          padding: 10px 15px;
-          font-size: 0.9rem;
+        .od-subtitle {
+          font-size: 1rem;
         }
 
-        .od-btn {
-          padding: 10px 20px;
-          font-size: 0.9rem;
+        .od-gender-selector {
+          flex-direction: column;
+          align-items: center;
         }
 
-        .od-style-selection {
-          grid-template-columns: 1fr;
+        .od-outfit-options {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .od-avatar {
+          width: 250px;
+          height: 350px;
         }
       }
 
@@ -361,48 +397,190 @@
           transform: translateY(0);
         }
       }
-
-      .od-container {
-        animation: fadeIn 0.5s ease-out;
-      }
     </style>
   </head>
-  <body>
-    <section class="od-container">
+  <body class="od-body">
+    <div class="od-container">
       <div class="od-header">
-        <h2 class="od-title">Create Your Outfit</h2>
+        <h2 class="od-title">Outfit Designer</h2>
         <p class="od-subtitle">
-          Design your custom outfit using our interactive tool. Choose gender,
-          select a category, pick a style, customize colors, and input sizes.
+          Create your custom outfit design. Choose your gender, select a style,
+          customize it, and place your order!
         </p>
       </div>
 
-      <div class="od-gender-selection">
-        <button class="od-gender-btn active" data-gender="male">Male</button>
-        <button class="od-gender-btn" data-gender="female">Female</button>
+      <div class="od-gender-selector">
+        <div class="od-gender-btn active" data-gender="male">
+          <i class="fas fa-male"></i>
+          <span>Male</span>
+        </div>
+        <div class="od-gender-btn" data-gender="female">
+          <i class="fas fa-female"></i>
+          <span>Female</span>
+        </div>
       </div>
 
-      <div class="od-category-tabs" id="odCategoryTabs">
-        <!-- Category tabs will be populated dynamically -->
-      </div>
-
-      <div class="od-style-selection" id="odStyleSelection">
-        <!-- Style cards will be populated dynamically -->
+      <div class="od-categories" id="odCategories">
+        <!-- Categories populated dynamically -->
       </div>
 
       <div class="od-design-area">
-        <div class="od-avatar-preview">
+        <div class="od-avatar-container">
           <canvas
-            id="odAvatarCanvas"
-            class="od-avatar-canvas"
+            id="odAvatar"
+            class="od-avatar"
             width="300"
-            height="400"
+            height="500"
           ></canvas>
+          <h3 class="od-panel-title">Select an Outfit Style</h3>
+          <div class="od-outfit-options" id="odOutfitOptions">
+            <!-- Outfit options populated dynamically -->
+          </div>
         </div>
-        <div class="od-options-panel" id="odOptionsPanel">
-          <!-- Color pickers will be populated dynamically -->
-          <div class="od-option-group" id="odSizeGroup">
-            <h3 class="od-option-title">Sizes (in inches)</h3>
+
+        <div class="od-customization-panel">
+          <h3 class="od-panel-title">Customize Your Outfit</h3>
+
+          <div class="od-color-picker" data-part="top">
+            <h4>Top Color</h4>
+            <div class="od-color-options">
+              <div
+                class="od-color-option selected"
+                style="background-color: #5f27cd"
+                data-color="#5f27cd"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #ff6b6b"
+                data-color="#ff6b6b"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #48dbfb"
+                data-color="#48dbfb"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #1dd1a1"
+                data-color="#1dd1a1"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #feca57"
+                data-color="#feca57"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #ff9ff3"
+                data-color="#ff9ff3"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #54a0ff"
+                data-color="#54a0ff"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #ee5253"
+                data-color="#ee5253"
+              ></div>
+            </div>
+          </div>
+
+          <div class="od-color-picker" data-part="bottom">
+            <h4>Bottom Color</h4>
+            <div class="od-color-options">
+              <div
+                class="od-color-option selected"
+                style="background-color: #5f27cd"
+                data-color="#5f27cd"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #ff6b6b"
+                data-color="#ff6b6b"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #48dbfb"
+                data-color="#48dbfb"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #1dd1a1"
+                data-color="#1dd1a1"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #feca57"
+                data-color="#feca57"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #ff9ff3"
+                data-color="#ff9ff3"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #54a0ff"
+                data-color="#54a0ff"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #ee5253"
+                data-color="#ee5253"
+              ></div>
+            </div>
+          </div>
+
+          <div class="od-color-picker" data-part="accessory">
+            <h4>Accessory Color</h4>
+            <div class="od-color-options">
+              <div
+                class="od-color-option selected"
+                style="background-color: #5f27cd"
+                data-color="#5f27cd"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #ff6b6b"
+                data-color="#ff6b6b"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #48dbfb"
+                data-color="#48dbfb"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #1dd1a1"
+                data-color="#1dd1a1"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #feca57"
+                data-color="#feca57"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #ff9ff3"
+                data-color="#ff9ff3"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #54a0ff"
+                data-color="#54a0ff"
+              ></div>
+              <div
+                class="od-color-option"
+                style="background-color: #ee5253"
+                data-color="#ee5253"
+              ></div>
+            </div>
+          </div>
+
+          <div class="od-size-selector">
+            <h4>Sizes (in inches)</h4>
             <div class="od-size-inputs">
               <div class="od-size-field">
                 <label class="od-size-label">Chest/Bust</label>
@@ -411,6 +589,8 @@
                   class="od-size-input"
                   id="odSizeChest"
                   placeholder="e.g., 38"
+                  min="20"
+                  max="60"
                 />
               </div>
               <div class="od-size-field">
@@ -420,6 +600,8 @@
                   class="od-size-input"
                   id="odSizeWaist"
                   placeholder="e.g., 32"
+                  min="20"
+                  max="50"
                 />
               </div>
               <div class="od-size-field">
@@ -429,6 +611,8 @@
                   class="od-size-input"
                   id="odSizeHips"
                   placeholder="e.g., 40"
+                  min="20"
+                  max="60"
                 />
               </div>
               <div class="od-size-field">
@@ -438,66 +622,353 @@
                   class="od-size-input"
                   id="odSizeHeight"
                   placeholder="e.g., 68"
+                  min="50"
+                  max="80"
                 />
               </div>
             </div>
           </div>
+
+          <div class="od-actions">
+            <button class="od-btn od-btn-primary" id="odSaveDesign">
+              Save Design
+            </button>
+            <button class="od-btn od-btn-secondary" id="odPlaceOrder">
+              Place Order
+            </button>
+          </div>
         </div>
       </div>
-
-      <div class="od-actions">
-        <button class="od-btn od-save-btn">Save Design</button>
-        <button class="od-btn od-order-btn">Place Order</button>
-      </div>
-    </section>
+    </div>
 
     <script>
-      // Outfit categories and styles
-      const outfitCategories = {
-        male: [
-          {
-            name: "Office Wear",
-            styles: ["Formal Shirt & Pants", "Blazer Suit", "Tie Ensemble"],
-          },
-          {
-            name: "Evening Wear",
-            styles: ["Tuxedo", "Dinner Jacket", "Formal Suit"],
-          },
-          {
-            name: "Casual Wear",
-            styles: ["T-Shirt & Jeans", "Polo & Shorts", "Hoodie & Joggers"],
-          },
-          {
-            name: "Traditional Wear",
-            styles: ["Agbada", "Dashiki", "Senator Suit"],
-          },
-        ],
-        female: [
-          {
-            name: "Office Wear",
-            styles: ["Blouse & Skirt", "Pant Suit", "Formal Dress"],
-          },
-          {
-            name: "Evening Gown",
-            styles: ["Long Gown", "Cocktail Dress", "Ball Gown"],
-          },
-          {
-            name: "Casual Wear",
-            styles: ["Top & Jeans", "Sundress", "Sweater & Leggings"],
-          },
-          {
-            name: "Traditional Wear",
-            styles: ["Wrapper & Blouse", "Buba & Iro", "Ankara Dress"],
-          },
-        ],
+      // Outfit data for different genders and categories
+      const odOutfitData = {
+        male: {
+          casual: [
+            {
+              id: 1,
+              name: "T-Shirt & Jeans",
+              image:
+                "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 2,
+              name: "Polo & Chinos",
+              image:
+                "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 3,
+              name: "Hoodie & Joggers",
+              image:
+                "https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 4,
+              name: "Denim Jacket & Jeans",
+              image:
+                "https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 5,
+              name: "Graphic Tee & Shorts",
+              image:
+                "https://images.unsplash.com/photo-1598523073703-6510b0003369?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 6,
+              name: "Henley & Cargo Pants",
+              image:
+                "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+          ],
+          office: [
+            {
+              id: 1,
+              name: "Classic Suit",
+              image:
+                "https://images.unsplash.com/photo-1593030103066-0093718efeb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 2,
+              name: "Business Casual",
+              image:
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 3,
+              name: "Blazer & Dress Pants",
+              image:
+                "https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 4,
+              name: "Shirt & Tie Combo",
+              image:
+                "https://images.unsplash.com/photo-1514222709107-5b4e5b5d8703?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 5,
+              name: "Vest & Trousers",
+              image:
+                "https://images.unsplash.com/photo-1592878805746-6d6e86d8f4ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+          ],
+          evening: [
+            {
+              id: 1,
+              name: "Formal Tuxedo",
+              image:
+                "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 2,
+              name: "Cocktail Attire",
+              image:
+                "https://images.unsplash.com/photo-1575311373936-9e6f2a46a6ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 3,
+              name: "Dinner Jacket",
+              image:
+                "https://images.unsplash.com/photo-1562183241-b937e1a1e828?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 4,
+              name: "Velvet Suit",
+              image:
+                "https://images.unsplash.com/photo-1589998059171-9d6b0a7c4f9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+          ],
+          traditional: [
+            {
+              id: 1,
+              name: "Agbada",
+              image:
+                "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 2,
+              name: "Yoruba Traditional",
+              image:
+                "https://images.unsplash.com/photo-1583269952676-5d01304d1369?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 3,
+              name: "Igbo Traditional",
+              image:
+                "https://images.unsplash.com/photo-1518471153065-2f00e266af79?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 4,
+              name: "Hausa Traditional",
+              image:
+                "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 5,
+              name: "Senator Suit",
+              image:
+                "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+          ],
+          sport: [
+            {
+              id: 1,
+              name: "Training Outfit",
+              image:
+                "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 2,
+              name: "Running Gear",
+              image:
+                "https://images.unsplash.com/photo-1593079448116-009e4d1eef48?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 3,
+              name: "Athleisure Set",
+              image:
+                "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 4,
+              name: "Gym Tracksuit",
+              image:
+                "https://images.unsplash.com/photo-1598523073703-6510b0003369?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+          ],
+        },
+        female: {
+          casual: [
+            {
+              id: 1,
+              name: "Summer Dress",
+              image:
+                "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 2,
+              name: "Jeans & Blouse",
+              image:
+                "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 3,
+              name: "Jumpsuit",
+              image:
+                "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 4,
+              name: "Maxi Skirt & Top",
+              image:
+                "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 5,
+              name: "Sweater & Leggings",
+              image:
+                "https://images.unsplash.com/photo-1598523073703-6510b0003369?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 6,
+              name: "Denim Overalls",
+              image:
+                "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+          ],
+          office: [
+            {
+              id: 1,
+              name: "Professional Suit",
+              image:
+                "https://images.unsplash.com/photo-1583496661160-fb5886a13d77?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 2,
+              name: "Blouse & Skirt",
+              image:
+                "https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 3,
+              name: "Dress & Blazer",
+              image:
+                "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 4,
+              name: "Pantsuit",
+              image:
+                "https://images.unsplash.com/photo-1592878805746-6d6e86d8f4ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 5,
+              name: "Shirt Dress",
+              image:
+                "https://images.unsplash.com/photo-1583496661160-fb5886a13d77?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+          ],
+          evening: [
+            {
+              id: 1,
+              name: "Evening Gown",
+              image:
+                "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 2,
+              name: "Cocktail Dress",
+              image:
+                "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 3,
+              name: "Ball Gown",
+              image:
+                "https://images.unsplash.com/photo-1562183241-b937e1a1e828?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 4,
+              name: "Sequin Dress",
+              image:
+                "https://images.unsplash.com/photo-1589998059171-9d6b0a7c4f9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+          ],
+          traditional: [
+            {
+              id: 1,
+              name: "Ankara Gown",
+              image:
+                "https://images.unsplash.com/photo-1583269952676-5d01304d1369?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 2,
+              name: "Hausa Traditional",
+              image:
+                "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 3,
+              name: "Yoruba Wrapper & Blouse",
+              image:
+                "https://images.unsplash.com/photo-1583269952676-5d01304d1369?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 4,
+              name: "Igbo Coral Dress",
+              image:
+                "https://images.unsplash.com/photo-1518471153065-2f00e266af79?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 5,
+              name: "Buba & Iro",
+              image:
+                "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+          ],
+          sport: [
+            {
+              id: 1,
+              name: "Yoga Outfit",
+              image:
+                "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 2,
+              name: "Gym Wear",
+              image:
+                "https://images.unsplash.com/photo-1593079448116-009e4d1eef48?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 3,
+              name: "Running Set",
+              image:
+                "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+            {
+              id: 4,
+              name: "Athleisure Outfit",
+              image:
+                "https://images.unsplash.com/photo-1598523073703-6510b0003369?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            },
+          ],
+        },
       };
 
-      // Design config
+      // Design configuration
       let designConfig = {
         gender: "male",
-        category: "",
-        style: "",
-        colors: {},
+        category: "casual",
+        outfitId: 1,
+        outfitName: "T-Shirt & Jeans",
+        colors: {
+          top: "#5f27cd",
+          bottom: "#5f27cd",
+          accessory: "#5f27cd",
+        },
         sizes: {
           chest: "",
           waist: "",
@@ -508,165 +979,158 @@
 
       // Initialize the page
       document.addEventListener("DOMContentLoaded", function () {
-        setupGenderSelection();
-        updateCategoryTabs("male");
-        setupActions();
+        setupGenderSelector();
+        setupColorPickers();
+        setupSizeInputs();
+        setupActionButtons();
+        updateCategories("male");
+        loadOutfitOptions("male", "casual");
+        drawAvatar();
       });
 
-      // Setup gender selection
-      function setupGenderSelection() {
-        const genderBtns = document.querySelectorAll(".od-gender-btn");
-        genderBtns.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            genderBtns.forEach((b) => b.classList.remove("active"));
-            btn.classList.add("active");
-            designConfig.gender = btn.dataset.gender;
-            updateCategoryTabs(designConfig.gender);
-            resetSelections();
-          });
-        });
-      }
-
-      // Update category tabs based on gender
-      function updateCategoryTabs(gender) {
-        const tabsContainer = document.getElementById("odCategoryTabs");
-        tabsContainer.innerHTML = "";
-        outfitCategories[gender].forEach((cat) => {
-          const tab = document.createElement("button");
-          tab.className = "od-category-btn";
-          tab.textContent = cat.name;
-          tab.dataset.category = cat.name;
-          tab.addEventListener("click", () => {
-            tabsContainer
-              .querySelectorAll(".od-category-btn")
-              .forEach((t) => t.classList.remove("active"));
-            tab.classList.add("active");
-            designConfig.category = cat.name;
-            updateStyleSelection(cat.styles);
-          });
-          tabsContainer.appendChild(tab);
-        });
-        // Select first category by default
-        if (tabsContainer.firstChild) {
-          tabsContainer.firstChild.click();
-        }
-      }
-
-      // Update style selection
-      function updateStyleSelection(styles) {
-        const styleSelection = document.getElementById("odStyleSelection");
-        styleSelection.innerHTML = "";
-        styles.forEach((style) => {
-          const card = document.createElement("div");
-          card.className = "od-style-card";
-          card.innerHTML = `
-                    <div class="od-style-preview"></div>
-                    <p class="od-style-name">${style}</p>
-                `;
-          card.dataset.style = style;
-          card.addEventListener("click", () => {
-            styleSelection
-              .querySelectorAll(".od-style-card")
-              .forEach((c) => c.classList.remove("active"));
-            card.classList.add("active");
-            designConfig.style = style;
-            updateColorPickers();
+      // Setup gender selector
+      function setupGenderSelector() {
+        const genderButtons = document.querySelectorAll(".od-gender-btn");
+        genderButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            genderButtons.forEach((btn) => btn.classList.remove("active"));
+            this.classList.add("active");
+            designConfig.gender = this.dataset.gender;
+            designConfig.category = Object.keys(
+              odOutfitData[designConfig.gender]
+            )[0];
+            designConfig.outfitId =
+              odOutfitData[designConfig.gender][designConfig.category][0].id;
+            designConfig.outfitName =
+              odOutfitData[designConfig.gender][designConfig.category][0].name;
+            updateCategories(designConfig.gender);
+            loadOutfitOptions(designConfig.gender, designConfig.category);
             drawAvatar();
           });
-          styleSelection.appendChild(card);
         });
-        // Select first style by default
-        if (styleSelection.firstChild) {
-          styleSelection.firstChild.click();
-        }
       }
 
-      // Update color pickers based on category and style (simplified to shirt/top, pants/bottom, shoes)
-      function updateColorPickers() {
-        const optionsPanel = document.getElementById("odOptionsPanel");
-        optionsPanel.innerHTML = "";
-        const parts = ["Top", "Bottom", "Shoes"]; // Simplified parts
-        parts.forEach((part) => {
-          const group = document.createElement("div");
-          group.className = "od-option-group";
-          group.innerHTML = `
-                    <h3 class="od-option-title">${part} Color</h3>
-                    <div class="od-color-picker" data-part="${part.toLowerCase()}">
-                        <div class="od-color-swatch active" style="background: #ffffff;" data-color="#ffffff"></div>
-                        <div class="od-color-swatch" style="background: #ff0000;" data-color="#ff0000"></div>
-                        <div class="od-color-swatch" style="background: #00ff00;" data-color="#00ff00"></div>
-                        <div class="od-color-swatch" style="background: #0000ff;" data-color="#0000ff"></div>
-                        <div class="od-color-swatch" style="background: #ffff00;" data-color="#ffff00"></div>
-                    </div>
-                `;
-          optionsPanel.appendChild(group);
+      // Update category buttons
+      function updateCategories(gender) {
+        const categoriesContainer = document.getElementById("odCategories");
+        categoriesContainer.innerHTML = "";
+        const categories = Object.keys(odOutfitData[gender]);
+        categories.forEach((category) => {
+          const button = document.createElement("button");
+          button.className = `od-category-btn ${
+            category === designConfig.category ? "active" : ""
+          }`;
+          button.dataset.category = category;
+          button.textContent =
+            category.charAt(0).toUpperCase() +
+            category
+              .slice(1)
+              .replace(/([A-Z])/g, " $1")
+              .trim();
+          button.addEventListener("click", () => {
+            categoriesContainer
+              .querySelectorAll(".od-category-btn")
+              .forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+            designConfig.category = category;
+            designConfig.outfitId = odOutfitData[gender][category][0].id;
+            designConfig.outfitName = odOutfitData[gender][category][0].name;
+            loadOutfitOptions(gender, category);
+            drawAvatar();
+          });
+          categoriesContainer.appendChild(button);
         });
+      }
 
-        // Add size group
-        const sizeGroup = document.createElement("div");
-        sizeGroup.className = "od-option-group";
-        sizeGroup.id = "odSizeGroup";
-        sizeGroup.innerHTML = `
-                <h3 class="od-option-title">Sizes (in inches)</h3>
-                <div class="od-size-inputs">
-                    <div class="od-size-field">
-                        <label class="od-size-label">Chest/Bust</label>
-                        <input type="number" class="od-size-input" id="odSizeChest" placeholder="e.g., 38" value="${designConfig.sizes.chest}">
-                    </div>
-                    <div class="od-size-field">
-                        <label class="od-size-label">Waist</label>
-                        <input type="number" class="od-size-input" id="odSizeWaist" placeholder="e.g., 32" value="${designConfig.sizes.waist}">
-                    </div>
-                    <div class="od-size-field">
-                        <label class="od-size-label">Hips</label>
-                        <input type="number" class="od-size-input" id="odSizeHips" placeholder="e.g., 40" value="${designConfig.sizes.hips}">
-                    </div>
-                    <div class="od-size-field">
-                        <label class="od-size-label">Height</label>
-                        <input type="number" class="od-size-input" id="odSizeHeight" placeholder="e.g., 68" value="${designConfig.sizes.height}">
-                    </div>
-                </div>
-            `;
-        optionsPanel.appendChild(sizeGroup);
+      // Load outfit options
+      function loadOutfitOptions(gender, category) {
+        const outfitOptionsContainer =
+          document.getElementById("odOutfitOptions");
+        outfitOptionsContainer.innerHTML = "";
+        const outfits = odOutfitData[gender][category];
+        outfits.forEach((outfit) => {
+          const outfitOption = document.createElement("div");
+          outfitOption.className = `od-outfit-option ${
+            outfit.id === designConfig.outfitId ? "selected" : ""
+          }`;
+          outfitOption.dataset.outfitId = outfit.id;
+          outfitOption.style.backgroundImage = `url('${outfit.image}')`;
+          outfitOption.innerHTML = `<div class="od-outfit-name">${outfit.name}</div>`;
+          outfitOption.addEventListener("click", () => {
+            outfitOptionsContainer
+              .querySelectorAll(".od-outfit-option")
+              .forEach((opt) => opt.classList.remove("selected"));
+            outfitOption.classList.add("selected");
+            designConfig.outfitId = outfit.id;
+            designConfig.outfitName = outfit.name;
+            drawAvatar();
+          });
+          outfitOptionsContainer.appendChild(outfitOption);
+        });
+      }
 
-        // Setup color pickers
-        const colorPickers = optionsPanel.querySelectorAll(".od-color-picker");
+      // Setup color pickers
+      function setupColorPickers() {
+        const colorPickers = document.querySelectorAll(".od-color-picker");
         colorPickers.forEach((picker) => {
-          const swatches = picker.querySelectorAll(".od-color-swatch");
-          swatches.forEach((swatch) => {
-            swatch.addEventListener("click", () => {
-              swatches.forEach((s) => s.classList.remove("active"));
-              swatch.classList.add("active");
-              const part = picker.dataset.part;
-              designConfig.colors[part] = swatch.dataset.color;
+          const part = picker.dataset.part;
+          const colorOptions = picker.querySelectorAll(".od-color-option");
+          colorOptions.forEach((option) => {
+            option.addEventListener("click", () => {
+              colorOptions.forEach((opt) => opt.classList.remove("selected"));
+              option.classList.add("selected");
+              designConfig.colors[part] = option.dataset.color;
               drawAvatar();
             });
           });
         });
+      }
 
-        // Setup size inputs
-        const sizeInputs = optionsPanel.querySelectorAll(".od-size-input");
+      // Setup size inputs
+      function setupSizeInputs() {
+        const sizeInputs = document.querySelectorAll(".od-size-input");
         sizeInputs.forEach((input) => {
           input.addEventListener("input", () => {
+            const value = input.value;
+            const min = parseInt(input.min);
+            const max = parseInt(input.max);
+            if (value && (value < min || value > max)) {
+              input.value = "";
+              alert(
+                `Please enter a value between ${min} and ${max} for ${input.id.replace(
+                  "odSize",
+                  ""
+                )}.`
+              );
+            }
             designConfig.sizes[input.id.replace("odSize", "").toLowerCase()] =
-              input.value;
+              value;
           });
         });
       }
 
-      // Setup save and order actions
-      function setupActions() {
-        const saveBtn = document.querySelector(".od-save-btn");
-        const orderBtn = document.querySelector(".od-order-btn");
+      // Setup action buttons
+      function setupActionButtons() {
+        const saveButton = document.getElementById("odSaveDesign");
+        const orderButton = document.getElementById("odPlaceOrder");
 
-        saveBtn.addEventListener("click", () => {
+        saveButton.addEventListener("click", () => {
           localStorage.setItem("savedDesign", JSON.stringify(designConfig));
           alert("Design saved successfully!");
         });
 
-        orderBtn.addEventListener("click", () => {
-          if (!designConfig.category || !designConfig.style) {
-            alert("Please select a category and style.");
+        orderButton.addEventListener("click", () => {
+          if (!designConfig.outfitId) {
+            alert("Please select an outfit style.");
+            return;
+          }
+          if (
+            !designConfig.sizes.chest ||
+            !designConfig.sizes.waist ||
+            !designConfig.sizes.hips ||
+            !designConfig.sizes.height
+          ) {
+            alert("Please enter all size measurements.");
             return;
           }
           const orderSummary = `
@@ -674,114 +1138,59 @@ Gender: ${
             designConfig.gender.charAt(0).toUpperCase() +
             designConfig.gender.slice(1)
           }
-Category: ${designConfig.category}
-Style: ${designConfig.style}
-Colors: ${Object.entries(designConfig.colors)
-            .map(
-              ([part, color]) =>
-                `${part.charAt(0).toUpperCase() + part.slice(1)}: ${color}`
-            )
-            .join(", ")}
-Sizes: Chest/Bust: ${designConfig.sizes.chest || "N/A"}, Waist: ${
-            designConfig.sizes.waist || "N/A"
-          }, Hips: ${designConfig.sizes.hips || "N/A"}, Height: ${
-            designConfig.sizes.height || "N/A"
+Category: ${
+            designConfig.category.charAt(0).toUpperCase() +
+            designConfig.category
+              .slice(1)
+              .replace(/([A-Z])/g, " $1")
+              .trim()
           }
+Style: ${designConfig.outfitName}
+Colors:
+  Top: ${designConfig.colors.top}
+  Bottom: ${designConfig.colors.bottom}
+  Accessory: ${designConfig.colors.accessory}
+Sizes:
+  Chest/Bust: ${designConfig.sizes.chest} in
+  Waist: ${designConfig.sizes.waist} in
+  Hips: ${designConfig.sizes.hips} in
+  Height: ${designConfig.sizes.height} in
                 `;
           alert(
-            `Order placed!\n\n${orderSummary}\n\nPlease transfer the amount to FashHub Bank Account: 0123456789`
+            `Order placed successfully!\n\n${orderSummary}\n\nPlease transfer the amount to FashHub Bank Account: 0123456789`
           );
         });
       }
 
-      // Draw avatar on canvas (simplified drawing based on style)
+      // Draw avatar on canvas
       function drawAvatar() {
-        const canvas = document.getElementById("odAvatarCanvas");
+        const canvas = document.getElementById("odAvatar");
         const ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw basic body
-        ctx.fillStyle = "#f0d9b5"; // Skin color
-        // Head
-        ctx.beginPath();
-        ctx.arc(150, 50, 30, 0, Math.PI * 2);
-        ctx.fill();
+        // Load and draw outfit image
+        const outfit = odOutfitData[designConfig.gender][
+          designConfig.category
+        ].find((o) => o.id === designConfig.outfitId);
+        const img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-        // Body based on gender and style (simplified)
-        if (designConfig.gender === "male") {
-          // Torso (shirt)
-          ctx.fillStyle = designConfig.colors.top || "#ffffff";
+          // Apply color tint (simplified simulation)
+          ctx.globalCompositeOperation = "source-atop";
+          // Top
+          ctx.fillStyle = designConfig.colors.top;
           ctx.fillRect(120, 80, 60, 100);
-
-          // Pants
-          ctx.fillStyle = designConfig.colors.bottom || "#000000";
+          // Bottom
+          ctx.fillStyle = designConfig.colors.bottom;
           ctx.fillRect(120, 180, 60, 150);
-
-          // Shoes
-          ctx.fillStyle = designConfig.colors.shoes || "#000000";
-          ctx.fillRect(120, 330, 30, 20);
-          ctx.fillRect(150, 330, 30, 20);
-
-          // Add style-specific elements
-          if (designConfig.style === "Formal Shirt & Pants") {
-            // Tie
-            ctx.fillStyle = "#ff0000";
-            ctx.beginPath();
-            ctx.moveTo(150, 80);
-            ctx.lineTo(140, 100);
-            ctx.lineTo(160, 100);
-            ctx.closePath();
-            ctx.fill();
-          } else if (designConfig.style === "Blazer Suit") {
-            // Blazer
-            ctx.fillStyle = "#0000ff";
-            ctx.fillRect(110, 80, 80, 100);
-          } // Add more for other styles if needed
-        } else {
-          // Female
-          // Top (blouse/dress)
-          ctx.fillStyle = designConfig.colors.top || "#ffffff";
-          ctx.beginPath();
-          ctx.moveTo(120, 80);
-          ctx.lineTo(180, 80);
-          ctx.lineTo(160, 180);
-          ctx.lineTo(140, 180);
-          ctx.closePath();
-          ctx.fill();
-
-          // Bottom (skirt/pants)
-          ctx.fillStyle = designConfig.colors.bottom || "#000000";
-          ctx.beginPath();
-          ctx.moveTo(140, 180);
-          ctx.lineTo(160, 180);
-          ctx.lineTo(170, 330);
-          ctx.lineTo(130, 330);
-          ctx.closePath();
-          ctx.fill();
-
-          // Shoes
-          ctx.fillStyle = designConfig.colors.shoes || "#000000";
-          ctx.fillRect(130, 330, 20, 20);
-          ctx.fillRect(150, 330, 20, 20);
-
-          // Add style-specific elements
-          if (designConfig.style === "Long Gown") {
-            // Extend gown
-            ctx.fillStyle = designConfig.colors.top;
-            ctx.fillRect(130, 180, 40, 150);
-          } // Add more for other styles if needed
-        }
-      }
-
-      // Reset selections when gender changes
-      function resetSelections() {
-        designConfig.category = "";
-        designConfig.style = "";
-        designConfig.colors = {};
-        designConfig.sizes = { chest: "", waist: "", hips: "", height: "" };
-        document.getElementById("odStyleSelection").innerHTML = "";
-        document.getElementById("odOptionsPanel").innerHTML = "";
-        drawAvatar();
+          // Accessory (e.g., tie, scarf)
+          ctx.fillStyle = designConfig.colors.accessory;
+          ctx.fillRect(140, 80, 20, 20);
+          ctx.globalCompositeOperation = "source-over";
+        };
+        img.src = outfit.image;
       }
     </script>
   </body>
