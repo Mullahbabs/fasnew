@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outfit Design | FashHub</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #ff6b6b;
+        --secondary: #5f27cd;
+        --accent: #48dbfb;
+        --success: #28a745;
+        --text: #333;
+        --text-light: #666;
+        --bg: #fff;
+        --bg-secondary: #f8f9fa;
+        --border: #e0e0e0;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 20px;
+        min-height: 100vh;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        margin: 0;
+      }
+
+      .od-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: var(--bg);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .od-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .od-title {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+        position: relative;
+        display: inline-block;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .od-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        border-radius: 2px;
+      }
+
+      .od-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        max-width: 700px;
+        margin: 0 auto;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .od-gender-selection {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .od-gender-btn {
+        padding: 12px 20px;
+        background: var(--bg-secondary);
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid transparent;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .od-gender-btn.active {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(95, 39, 205, 0.3);
+      }
+
+      .od-gender-btn:hover:not(.active) {
+        border-color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .od-category-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .od-category-btn {
+        padding: 12px 20px;
+        background: var(--bg-secondary);
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid transparent;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .od-category-btn.active {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(95, 39, 205, 0.3);
+      }
+
+      .od-category-btn:hover:not(.active) {
+        border-color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .od-style-selection {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .od-style-card {
+        background: var(--bg-secondary);
+        border-radius: 15px;
+        padding: 1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+
+      .od-style-card.active {
+        border: 2px solid var(--primary);
+        transform: translateY(-5px);
+      }
+
+      .od-style-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(95, 39, 205, 0.3);
+      }
+
+      .od-style-preview {
+        width: 100%;
+        height: 150px;
+        background: #eee;
+        margin-bottom: 0.5rem;
+        border-radius: 10px;
+      }
+
+      .od-style-name {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--secondary);
+      }
+
+      .od-design-area {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .od-avatar-preview {
+        flex: 1;
+        background: var(--bg-secondary);
+        border-radius: 15px;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .od-avatar-canvas {
+        width: 100%;
+        height: 400px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+
+      .od-options-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .od-option-group {
+        background: var(--bg-secondary);
+        border-radius: 15px;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .od-option-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--secondary);
+        font-family: "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .od-color-picker {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .od-color-swatch {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid transparent;
+      }
+
+      .od-color-swatch.active {
+        border-color: var(--primary);
+        transform: scale(1.2);
+      }
+
+      .od-color-swatch:hover {
+        transform: scale(1.1);
+      }
+
+      .od-size-inputs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .od-size-field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .od-size-label {
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+        color: var(--text-light);
+      }
+
+      .od-size-input {
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        font-family: "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .od-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .od-btn {
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        font-family: "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .od-save-btn {
+        background: var(--secondary);
+        color: white;
+        border: none;
+      }
+
+      .od-save-btn:hover {
+        background: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .od-order-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+      }
+
+      .od-order-btn:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .od-design-area {
+          flex-direction: column;
+        }
+
+        .od-avatar-canvas {
+          height: 300px;
+        }
+
+        .od-size-inputs {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .od-title {
+          font-size: 2.2rem;
+        }
+
+        .od-gender-btn,
+        .od-category-btn {
+          padding: 10px 15px;
+          font-size: 0.9rem;
+        }
+
+        .od-btn {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+
+        .od-style-selection {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .od-container {
+        animation: fadeIn 0.5s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="od-container">
+      <div class="od-header">
+        <h2 class="od-title">Create Your Outfit</h2>
+        <p class="od-subtitle">
+          Design your custom outfit using our interactive tool. Choose gender,
+          select a category, pick a style, customize colors, and input sizes.
+        </p>
+      </div>
+
+      <div class="od-gender-selection">
+        <button class="od-gender-btn active" data-gender="male">Male</button>
+        <button class="od-gender-btn" data-gender="female">Female</button>
+      </div>
+
+      <div class="od-category-tabs" id="odCategoryTabs">
+        <!-- Category tabs will be populated dynamically -->
+      </div>
+
+      <div class="od-style-selection" id="odStyleSelection">
+        <!-- Style cards will be populated dynamically -->
+      </div>
+
+      <div class="od-design-area">
+        <div class="od-avatar-preview">
+          <canvas
+            id="odAvatarCanvas"
+            class="od-avatar-canvas"
+            width="300"
+            height="400"
+          ></canvas>
+        </div>
+        <div class="od-options-panel" id="odOptionsPanel">
+          <!-- Color pickers will be populated dynamically -->
+          <div class="od-option-group" id="odSizeGroup">
+            <h3 class="od-option-title">Sizes (in inches)</h3>
+            <div class="od-size-inputs">
+              <div class="od-size-field">
+                <label class="od-size-label">Chest/Bust</label>
+                <input
+                  type="number"
+                  class="od-size-input"
+                  id="odSizeChest"
+                  placeholder="e.g., 38"
+                />
+              </div>
+              <div class="od-size-field">
+                <label class="od-size-label">Waist</label>
+                <input
+                  type="number"
+                  class="od-size-input"
+                  id="odSizeWaist"
+                  placeholder="e.g., 32"
+                />
+              </div>
+              <div class="od-size-field">
+                <label class="od-size-label">Hips</label>
+                <input
+                  type="number"
+                  class="od-size-input"
+                  id="odSizeHips"
+                  placeholder="e.g., 40"
+                />
+              </div>
+              <div class="od-size-field">
+                <label class="od-size-label">Height</label>
+                <input
+                  type="number"
+                  class="od-size-input"
+                  id="odSizeHeight"
+                  placeholder="e.g., 68"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="od-actions">
+        <button class="od-btn od-save-btn">Save Design</button>
+        <button class="od-btn od-order-btn">Place Order</button>
+      </div>
+    </section>
+
+    <script>
+      // Outfit categories and styles
+      const outfitCategories = {
+        male: [
+          {
+            name: "Office Wear",
+            styles: ["Formal Shirt & Pants", "Blazer Suit", "Tie Ensemble"],
+          },
+          {
+            name: "Evening Wear",
+            styles: ["Tuxedo", "Dinner Jacket", "Formal Suit"],
+          },
+          {
+            name: "Casual Wear",
+            styles: ["T-Shirt & Jeans", "Polo & Shorts", "Hoodie & Joggers"],
+          },
+          {
+            name: "Traditional Wear",
+            styles: ["Agbada", "Dashiki", "Senator Suit"],
+          },
+        ],
+        female: [
+          {
+            name: "Office Wear",
+            styles: ["Blouse & Skirt", "Pant Suit", "Formal Dress"],
+          },
+          {
+            name: "Evening Gown",
+            styles: ["Long Gown", "Cocktail Dress", "Ball Gown"],
+          },
+          {
+            name: "Casual Wear",
+            styles: ["Top & Jeans", "Sundress", "Sweater & Leggings"],
+          },
+          {
+            name: "Traditional Wear",
+            styles: ["Wrapper & Blouse", "Buba & Iro", "Ankara Dress"],
+          },
+        ],
+      };
+
+      // Design config
+      let designConfig = {
+        gender: "male",
+        category: "",
+        style: "",
+        colors: {},
+        sizes: {
+          chest: "",
+          waist: "",
+          hips: "",
+          height: "",
+        },
+      };
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", function () {
+        setupGenderSelection();
+        updateCategoryTabs("male");
+        setupActions();
+      });
+
+      // Setup gender selection
+      function setupGenderSelection() {
+        const genderBtns = document.querySelectorAll(".od-gender-btn");
+        genderBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            genderBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            designConfig.gender = btn.dataset.gender;
+            updateCategoryTabs(designConfig.gender);
+            resetSelections();
+          });
+        });
+      }
+
+      // Update category tabs based on gender
+      function updateCategoryTabs(gender) {
+        const tabsContainer = document.getElementById("odCategoryTabs");
+        tabsContainer.innerHTML = "";
+        outfitCategories[gender].forEach((cat) => {
+          const tab = document.createElement("button");
+          tab.className = "od-category-btn";
+          tab.textContent = cat.name;
+          tab.dataset.category = cat.name;
+          tab.addEventListener("click", () => {
+            tabsContainer
+              .querySelectorAll(".od-category-btn")
+              .forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
+            designConfig.category = cat.name;
+            updateStyleSelection(cat.styles);
+          });
+          tabsContainer.appendChild(tab);
+        });
+        // Select first category by default
+        if (tabsContainer.firstChild) {
+          tabsContainer.firstChild.click();
+        }
+      }
+
+      // Update style selection
+      function updateStyleSelection(styles) {
+        const styleSelection = document.getElementById("odStyleSelection");
+        styleSelection.innerHTML = "";
+        styles.forEach((style) => {
+          const card = document.createElement("div");
+          card.className = "od-style-card";
+          card.innerHTML = `
+                    <div class="od-style-preview"></div>
+                    <p class="od-style-name">${style}</p>
+                `;
+          card.dataset.style = style;
+          card.addEventListener("click", () => {
+            styleSelection
+              .querySelectorAll(".od-style-card")
+              .forEach((c) => c.classList.remove("active"));
+            card.classList.add("active");
+            designConfig.style = style;
+            updateColorPickers();
+            drawAvatar();
+          });
+          styleSelection.appendChild(card);
+        });
+        // Select first style by default
+        if (styleSelection.firstChild) {
+          styleSelection.firstChild.click();
+        }
+      }
+
+      // Update color pickers based on category and style (simplified to shirt/top, pants/bottom, shoes)
+      function updateColorPickers() {
+        const optionsPanel = document.getElementById("odOptionsPanel");
+        optionsPanel.innerHTML = "";
+        const parts = ["Top", "Bottom", "Shoes"]; // Simplified parts
+        parts.forEach((part) => {
+          const group = document.createElement("div");
+          group.className = "od-option-group";
+          group.innerHTML = `
+                    <h3 class="od-option-title">${part} Color</h3>
+                    <div class="od-color-picker" data-part="${part.toLowerCase()}">
+                        <div class="od-color-swatch active" style="background: #ffffff;" data-color="#ffffff"></div>
+                        <div class="od-color-swatch" style="background: #ff0000;" data-color="#ff0000"></div>
+                        <div class="od-color-swatch" style="background: #00ff00;" data-color="#00ff00"></div>
+                        <div class="od-color-swatch" style="background: #0000ff;" data-color="#0000ff"></div>
+                        <div class="od-color-swatch" style="background: #ffff00;" data-color="#ffff00"></div>
+                    </div>
+                `;
+          optionsPanel.appendChild(group);
+        });
+
+        // Add size group
+        const sizeGroup = document.createElement("div");
+        sizeGroup.className = "od-option-group";
+        sizeGroup.id = "odSizeGroup";
+        sizeGroup.innerHTML = `
+                <h3 class="od-option-title">Sizes (in inches)</h3>
+                <div class="od-size-inputs">
+                    <div class="od-size-field">
+                        <label class="od-size-label">Chest/Bust</label>
+                        <input type="number" class="od-size-input" id="odSizeChest" placeholder="e.g., 38" value="${designConfig.sizes.chest}">
+                    </div>
+                    <div class="od-size-field">
+                        <label class="od-size-label">Waist</label>
+                        <input type="number" class="od-size-input" id="odSizeWaist" placeholder="e.g., 32" value="${designConfig.sizes.waist}">
+                    </div>
+                    <div class="od-size-field">
+                        <label class="od-size-label">Hips</label>
+                        <input type="number" class="od-size-input" id="odSizeHips" placeholder="e.g., 40" value="${designConfig.sizes.hips}">
+                    </div>
+                    <div class="od-size-field">
+                        <label class="od-size-label">Height</label>
+                        <input type="number" class="od-size-input" id="odSizeHeight" placeholder="e.g., 68" value="${designConfig.sizes.height}">
+                    </div>
+                </div>
+            `;
+        optionsPanel.appendChild(sizeGroup);
+
+        // Setup color pickers
+        const colorPickers = optionsPanel.querySelectorAll(".od-color-picker");
+        colorPickers.forEach((picker) => {
+          const swatches = picker.querySelectorAll(".od-color-swatch");
+          swatches.forEach((swatch) => {
+            swatch.addEventListener("click", () => {
+              swatches.forEach((s) => s.classList.remove("active"));
+              swatch.classList.add("active");
+              const part = picker.dataset.part;
+              designConfig.colors[part] = swatch.dataset.color;
+              drawAvatar();
+            });
+          });
+        });
+
+        // Setup size inputs
+        const sizeInputs = optionsPanel.querySelectorAll(".od-size-input");
+        sizeInputs.forEach((input) => {
+          input.addEventListener("input", () => {
+            designConfig.sizes[input.id.replace("odSize", "").toLowerCase()] =
+              input.value;
+          });
+        });
+      }
+
+      // Setup save and order actions
+      function setupActions() {
+        const saveBtn = document.querySelector(".od-save-btn");
+        const orderBtn = document.querySelector(".od-order-btn");
+
+        saveBtn.addEventListener("click", () => {
+          localStorage.setItem("savedDesign", JSON.stringify(designConfig));
+          alert("Design saved successfully!");
+        });
+
+        orderBtn.addEventListener("click", () => {
+          if (!designConfig.category || !designConfig.style) {
+            alert("Please select a category and style.");
+            return;
+          }
+          const orderSummary = `
+Gender: ${
+            designConfig.gender.charAt(0).toUpperCase() +
+            designConfig.gender.slice(1)
+          }
+Category: ${designConfig.category}
+Style: ${designConfig.style}
+Colors: ${Object.entries(designConfig.colors)
+            .map(
+              ([part, color]) =>
+                `${part.charAt(0).toUpperCase() + part.slice(1)}: ${color}`
+            )
+            .join(", ")}
+Sizes: Chest/Bust: ${designConfig.sizes.chest || "N/A"}, Waist: ${
+            designConfig.sizes.waist || "N/A"
+          }, Hips: ${designConfig.sizes.hips || "N/A"}, Height: ${
+            designConfig.sizes.height || "N/A"
+          }
+                `;
+          alert(
+            `Order placed!\n\n${orderSummary}\n\nPlease transfer the amount to FashHub Bank Account: 0123456789`
+          );
+        });
+      }
+
+      // Draw avatar on canvas (simplified drawing based on style)
+      function drawAvatar() {
+        const canvas = document.getElementById("odAvatarCanvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw basic body
+        ctx.fillStyle = "#f0d9b5"; // Skin color
+        // Head
+        ctx.beginPath();
+        ctx.arc(150, 50, 30, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Body based on gender and style (simplified)
+        if (designConfig.gender === "male") {
+          // Torso (shirt)
+          ctx.fillStyle = designConfig.colors.top || "#ffffff";
+          ctx.fillRect(120, 80, 60, 100);
+
+          // Pants
+          ctx.fillStyle = designConfig.colors.bottom || "#000000";
+          ctx.fillRect(120, 180, 60, 150);
+
+          // Shoes
+          ctx.fillStyle = designConfig.colors.shoes || "#000000";
+          ctx.fillRect(120, 330, 30, 20);
+          ctx.fillRect(150, 330, 30, 20);
+
+          // Add style-specific elements
+          if (designConfig.style === "Formal Shirt & Pants") {
+            // Tie
+            ctx.fillStyle = "#ff0000";
+            ctx.beginPath();
+            ctx.moveTo(150, 80);
+            ctx.lineTo(140, 100);
+            ctx.lineTo(160, 100);
+            ctx.closePath();
+            ctx.fill();
+          } else if (designConfig.style === "Blazer Suit") {
+            // Blazer
+            ctx.fillStyle = "#0000ff";
+            ctx.fillRect(110, 80, 80, 100);
+          } // Add more for other styles if needed
+        } else {
+          // Female
+          // Top (blouse/dress)
+          ctx.fillStyle = designConfig.colors.top || "#ffffff";
+          ctx.beginPath();
+          ctx.moveTo(120, 80);
+          ctx.lineTo(180, 80);
+          ctx.lineTo(160, 180);
+          ctx.lineTo(140, 180);
+          ctx.closePath();
+          ctx.fill();
+
+          // Bottom (skirt/pants)
+          ctx.fillStyle = designConfig.colors.bottom || "#000000";
+          ctx.beginPath();
+          ctx.moveTo(140, 180);
+          ctx.lineTo(160, 180);
+          ctx.lineTo(170, 330);
+          ctx.lineTo(130, 330);
+          ctx.closePath();
+          ctx.fill();
+
+          // Shoes
+          ctx.fillStyle = designConfig.colors.shoes || "#000000";
+          ctx.fillRect(130, 330, 20, 20);
+          ctx.fillRect(150, 330, 20, 20);
+
+          // Add style-specific elements
+          if (designConfig.style === "Long Gown") {
+            // Extend gown
+            ctx.fillStyle = designConfig.colors.top;
+            ctx.fillRect(130, 180, 40, 150);
+          } // Add more for other styles if needed
+        }
+      }
+
+      // Reset selections when gender changes
+      function resetSelections() {
+        designConfig.category = "";
+        designConfig.style = "";
+        designConfig.colors = {};
+        designConfig.sizes = { chest: "", waist: "", hips: "", height: "" };
+        document.getElementById("odStyleSelection").innerHTML = "";
+        document.getElementById("odOptionsPanel").innerHTML = "";
+        drawAvatar();
+      }
+    </script>
+  </body>
+</html>

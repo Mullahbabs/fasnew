@@ -234,10 +234,16 @@ const rsResellerData = {
   },
 };
 
+// Current category and sort option
+let currentCategory = "all";
+let currentSort = "rating";
+
 // Initialize the page
 document.addEventListener("DOMContentLoaded", function () {
   initializeResellerTabs();
   setupScrollControls();
+  setupSortControls();
+  showResellersForCategory(currentCategory);
 });
 
 // Create reseller tabs
@@ -250,7 +256,10 @@ function initializeResellerTabs() {
     tab.className = "rs-tab";
     tab.textContent = rsResellerData[category].title;
     tab.dataset.category = category;
-    tab.addEventListener("click", () => showResellersForCategory(category));
+    tab.addEventListener("click", () => {
+      currentCategory = category;
+      showResellersForCategory(category);
+    });
     tabsContainer.appendChild(tab);
   });
 
@@ -258,7 +267,6 @@ function initializeResellerTabs() {
   if (categories.length > 0) {
     const firstTab = tabsContainer.querySelector(".rs-tab");
     firstTab.classList.add("rs-tab-active");
-    showResellersForCategory(categories[0]);
   }
 }
 
@@ -274,6 +282,15 @@ function setupScrollControls() {
 
   scrollRightBtn.addEventListener("click", () => {
     tabsContainer.scrollBy({ left: 200, behavior: "smooth" });
+  });
+}
+
+// Setup sort controls
+function setupSortControls() {
+  const sortSelect = document.getElementById("rsSortSelect");
+  sortSelect.addEventListener("change", () => {
+    currentSort = sortSelect.value;
+    showResellersForCategory(currentCategory);
   });
 }
 
@@ -293,24 +310,67 @@ function showResellersForCategory(category) {
   // Check if we have data for this category
   if (rsResellerData[category]) {
     const categoryData = rsResellerData[category];
-    let html = `<h2 class="rs-category-title">${categoryData.title}</h2>`;
-    html += `<div class="rs-resellers-grid">`;
+    let resellers = [...categoryData.resellers];
+
+    // Sort resellers based on current sort option
+    resellers.sort((a, b) => {
+      if (currentSort === "rating") return b.rating - a.rating;
+      if (currentSort === "items") return b.items - a.items;
+      if (currentSort === "positive") return b.positive - a.positive;
+      return 0;
+    });
+
+    let html = `
+                    <div class="rs-sort-container">
+                        <select class="rs-sort-select" id="rsSortSelect">
+                            <option value="rating" ${
+                              currentSort === "rating" ? "selected" : ""
+                            }>Sort by Rating</option>
+                            <option value="items" ${
+                              currentSort === "items" ? "selected" : ""
+                            }>Sort by Items</option>
+                            <option value="positive" ${
+                              currentSort === "positive" ? "selected" : ""
+                            }>Sort by Positive Feedback</option>
+                        </select>
+                    </div>
+                    <h2 class="rs-category-title">${categoryData.title}</h2>
+                    <div class="rs-resellers-grid">`;
 
     // Add resellers for this category
-    categoryData.resellers.forEach((reseller) => {
+    resellers.forEach((reseller) => {
       html += createResellerCard(reseller);
     });
 
     html += `</div>`;
     resellersContainer.innerHTML = html;
+
+    // Re-attach sort event listener
+    setupSortControls();
   } else {
     // No data available for this category
     resellersContainer.innerHTML = `
+                    <div class="rs-sort-container">
+                        <select class="rs-sort-select" id="rsSortSelect">
+                            <option value="rating" ${
+                              currentSort === "rating" ? "selected" : ""
+                            }>Sort by Rating</option>
+                            <option value="items" ${
+                              currentSort === "items" ? "selected" : ""
+                            }>Sort by Items</option>
+                            <option value="positive" ${
+                              currentSort === "positive" ? "selected" : ""
+                            }>Sort by Positive Feedback</option>
+                        </select>
+                    </div>
                     <div class="rs-empty-state">
                         <i class="rs-empty-state-icon fas fa-store"></i>
-                        <p>No resellers found for ${categoryData.title}. Check back soon!</p>
+                        <p>No resellers found for ${
+                          categoryData.title
+                        }. Check back soon!</p>
                     </div>
                 `;
+    setupSortControls();
   }
 }
 
