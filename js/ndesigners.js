@@ -222,8 +222,8 @@ function showDesignersForState(state) {
     // Iterate through LGAs
     for (const lga in stateData.lgas) {
       html += `<div class="nds_lga_group">
-                                <h3 class="nds_lga_heading">${lga}</h3>
-                                <div class="nds_designers_grid">`;
+                        <h3 class="nds_lga_heading">${lga}</h3>
+                          <div class="nds_designers_grid">`;
 
       // Add designers for this LGA
       stateData.lgas[lga].forEach((designer) => {
