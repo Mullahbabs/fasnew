@@ -4618,6 +4618,7 @@ body {
   text-align: justify;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  position: relative;
 }
 
 .vfs-upcoming-card:hover {
@@ -4644,6 +4645,33 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.vfs-countdown {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.vfs-countdown-unit {
+  background: var(--bg);
+  padding: 0.5rem;
+  border-radius: 8px;
+  min-width: 50px;
+  box-shadow: var(--shadow);
+}
+
+.vfs-countdown-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.vfs-countdown-label {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
 .vfs-remind-btn {
   display: inline-block;
   padding: 0.5rem 1.5rem;
@@ -4654,11 +4682,70 @@ body {
   font-weight: 600;
   transition: var(--transition);
   font-size: 0.9rem;
+  position: relative;
+  z-index: 2;
 }
 
 .vfs-remind-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(95, 39, 205, 0.3);
+}
+
+.vfs-calendar-options {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  background: var(--bg);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 1;
+}
+
+.vfs-upcoming-card:hover .vfs-calendar-options {
+  opacity: 1;
+  visibility: visible;
+  bottom: -15px;
+  transform: translateX(-50%) translateY(100%);
+}
+
+.vfs-calendar-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  color: var(--text);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.vfs-calendar-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.vfs-calendar-btn.google:hover {
+  background: #4285f4;
+  color: white;
+}
+
+.vfs-calendar-btn.outlook:hover {
+  background: #0078d4;
+  color: white;
+}
+
+.vfs-calendar-btn.ical:hover {
+  background: #5f27cd;
+  color: white;
 }
 
 .vfs-dark-mode-toggle {
@@ -4703,7 +4790,20 @@ body {
   }
 
   .vfs-upcoming-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .vfs-countdown {
+    gap: 0.3rem;
+  }
+
+  .vfs-countdown-unit {
+    min-width: 45px;
+    padding: 0.4rem;
+  }
+
+  .vfs-countdown-value {
+    font-size: 1.3rem;
   }
 }
 
@@ -4740,6 +4840,16 @@ body {
 
   .vfs-upcoming-grid {
     grid-template-columns: 1fr;
+  }
+
+  .vfs-countdown {
+    flex-wrap: wrap;
+  }
+
+  .vfs-calendar-options {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
   }
 }
 
