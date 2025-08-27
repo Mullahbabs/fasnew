@@ -4696,7 +4696,7 @@ body {
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%) translateY(100%);
-  background: var(--bg);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   padding: 0.8rem;
@@ -4705,13 +4705,14 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: var(--transition);
-  z-index: 1;
+  z-index: 10;
 }
 
 .vfs-upcoming-card:hover .vfs-calendar-options {
   opacity: 1;
   visibility: visible;
-  bottom: -15px;
+  bottom: 25px;
+
   transform: translateX(-50%) translateY(100%);
 }
 
