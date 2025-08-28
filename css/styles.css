@@ -96,13 +96,22 @@ body {
   text-decoration: none;
   color: #fff;
   padding: 0.5rem 1rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   font-weight: 500;
   white-space: nowrap;
+  border-radius: 8px;
 }
 
 .nav-item a:hover {
-  color: var(--nav-link-hover);
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.nav-item a.active {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(95, 39, 205, 0.3);
+  font-weight: 600;
 }
 
 .header-actions {
