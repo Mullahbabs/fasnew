@@ -1090,6 +1090,7 @@ body {
 .wishlist-items,
 .cart-items {
   margin: 1.5rem 0;
+  
 }
 
 .wishlist-item,
@@ -1119,6 +1120,7 @@ body {
 
 .cart-item-quantity {
   display: flex;
+  position: relative;
   align-items: center;
 }
 
@@ -1348,6 +1350,7 @@ body {
   padding: 8px 0;
   border-bottom: 1px solid var(--primary);
   text-align: justify;
+  align-content: space-around;
   display: flex;
   justify-content: space-around;
 }
