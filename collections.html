@@ -340,6 +340,115 @@
       </div>
     </section>
 
+    <section class="fashub-flash-sale">
+  <div class="fashub-sale-container">
+    <!-- Header -->
+    <div class="fashub-sale-header">
+      <h2 class="fashub-sale-title">Flash Sale</h2>
+      <p class="fashub-sale-subtitle">Limited time offers across all categories</p>
+      <div class="fashub-sale-timer">
+        <span class="fashub-timer-label">Ends in:</span>
+        <div class="fashub-timer-digits">
+          <span class="fashub-timer-box">24</span>:
+          <span class="fashub-timer-box">18</span>:
+          <span class="fashub-timer-box">45</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Navigation -->
+    <div class="fashub-category-nav">
+      <button class="fashub-category-btn fashub-category-active" data-category="all">
+        <span class="fashub-category-icon">👜</span>
+        All Items
+      </button>
+      <button class="fashub-category-btn" data-category="women">
+        <span class="fashub-category-icon">👚</span>
+        Women
+      </button>
+      <button class="fashub-category-btn" data-category="men">
+        <span class="fashub-category-icon">👔</span>
+        Men
+      </button>
+      <button class="fashub-category-btn" data-category="accessories">
+        <span class="fashub-category-icon">💍</span>
+        Accessories
+      </button>
+      <button class="fashub-category-btn" data-category="footwear">
+        <span class="fashub-category-icon">👠</span>
+        Footwear
+      </button>
+    </div>
+
+    <!-- Sale Items Grid -->
+    <div class="fashub-sale-grid">
+      <!-- Sale Item 1 -->
+      <div class="fashub-sale-card" data-category="women">
+        <div class="fashub-sale-badge">-40%</div>
+        <div class="fashub-sale-image">
+          <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Summer Dress">
+          <div class="fashub-sale-overlay">
+            <button class="fashub-quick-view">👀 Quick View</button>
+          </div>
+        </div>
+        <div class="fashub-sale-info">
+          <span class="fashub-sale-category">Dresses</span>
+          <h3 class="fashub-sale-name">Floral Summer Dress</h3>
+          <div class="fashub-price-container">
+            <span class="fashub-sale-price">$59.99</span>
+            <span class="fashub-original-price">$99.99</span>
+          </div>
+          <div class="fashub-sale-stock">
+            <div class="fashub-stock-bar">
+              <div class="fashub-stock-progress" style="width: 75%"></div>
+            </div>
+            <span class="fashub-stock-text">Only 12 left!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sale Item 2 -->
+      <div class="fashub-sale-card" data-category="men">
+        <div class="fashub-sale-badge">-30%</div>
+        <div class="fashub-sale-image">
+          <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Denim Jacket">
+          <div class="fashub-sale-overlay">
+            <button class="fashub-quick-view">👀 Quick View</button>
+          </div>
+        </div>
+        <div class="fashub-sale-info">
+          <span class="fashub-sale-category">Jackets</span>
+          <h3 class="fashub-sale-name">Vintage Denim Jacket</h3>
+          <div class="fashub-price-container">
+            <span class="fashub-sale-price">$69.99</span>
+            <span class="fashub-original-price">$99.99</span>
+          </div>
+          <div class="fashub-sale-stock">
+            <div class="fashub-stock-bar">
+              <div class="fashub-stock-progress" style="width: 45%"></div>
+            </div>
+            <span class="fashub-stock-text">Only 8 left!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add 10 more sale items following the same structure -->
+      <!-- ... -->
+
+    </div>
+
+    <!-- View All Button -->
+    <div class="fashub-sale-footer">
+      <button class="fashub-view-all-btn">
+        View All Sale Items
+        <svg class="fashub-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  </section>
+
     <section class="other-collections" style="margin-top: 30px;">
       <div class="container">
         <div class="section-header">
@@ -665,6 +774,56 @@
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', updateFashubCountdown);
     </script>
+
+    <script>
+      // Initialize sale section functionality
+  document.addEventListener('DOMContentLoaded', function() {
+  // Category filtering
+  const categoryBtns = document.querySelectorAll('.fashub-category-btn');
+  const saleCards = document.querySelectorAll('.fashub-sale-card');
+  
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Remove active class from all buttons
+      categoryBtns.forEach(b => b.classList.remove('fashub-category-active'));
+      
+      // Add active class to clicked button
+      this.classList.add('fashub-category-active');
+      
+      const category = this.getAttribute('data-category');
+      
+      // Filter cards
+      saleCards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+  
+  // Countdown timer (simplified)
+  function updateTimer() {
+    const timerBoxes = document.querySelectorAll('.fashub-timer-box');
+    // In a real implementation, you'd calculate actual time remaining
+    console.log('Timer updated');
+  }
+  
+  // Quick view functionality
+  const quickViewBtns = document.querySelectorAll('.fashub-quick-view');
+  quickViewBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      // Implement quick view modal here
+      alert('Quick view feature would open here!');
+    });
+  });
+  
+  // Initialize timer
+  setInterval(updateTimer, 1000);
+  });
+  </script>
 
 
     <script src="js/script.js"></script>

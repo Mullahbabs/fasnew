@@ -1090,7 +1090,6 @@ body {
 .wishlist-items,
 .cart-items {
   margin: 1.5rem 0;
-  
 }
 
 .wishlist-item,
@@ -4866,6 +4865,351 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     width: 90%;
+  }
+}
+
+/* Fashub Flash Sale Section */
+.fashub-flash-sale {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.fashub-flash-sale::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+.fashub-sale-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header Styles */
+.fashub-sale-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.fashub-sale-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.fashub-sale-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.fashub-sale-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255,255,255,0.2);
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+}
+
+.fashub-timer-label {
+  font-weight: 600;
+}
+
+.fashub-timer-digits {
+  display: flex;
+  gap: 0.5rem;
+  font-weight: 700;
+}
+
+.fashub-timer-box {
+  background: white;
+  color: #764ba2;
+  padding: 0.5rem;
+  border-radius: 8px;
+  min-width: 40px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Category Navigation */
+.fashub-category-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.fashub-category-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.fashub-category-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.fashub-category-active {
+  background: white;
+  color: #764ba2;
+  border-color: white;
+}
+
+.fashub-category-icon {
+  font-size: 1.2rem;
+}
+
+/* Sale Items Grid */
+.fashub-sale-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.fashub-sale-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.fashub-sale-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.fashub-sale-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #ff4757;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 2;
+}
+
+.fashub-sale-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.fashub-sale-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.fashub-sale-card:hover .fashub-sale-image img {
+  transform: scale(1.1);
+}
+
+.fashub-sale-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(118, 75, 162, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fashub-sale-card:hover .fashub-sale-overlay {
+  opacity: 1;
+}
+
+.fashub-quick-view {
+  background: white;
+  color: #764ba2;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.fashub-quick-view:hover {
+  transform: scale(1.1);
+}
+
+.fashub-sale-info {
+  padding: 1.5rem;
+  color: #333;
+}
+
+.fashub-sale-category {
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.fashub-sale-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2d3436;
+}
+
+.fashub-price-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.fashub-sale-price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ff4757;
+}
+
+.fashub-original-price {
+  font-size: 1rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.fashub-sale-stock {
+  margin-top: 1rem;
+}
+
+.fashub-stock-bar {
+  width: 100%;
+  height: 6px;
+  background: #f1f2f6;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.fashub-stock-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #ff4757, #ff6b81);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.fashub-stock-text {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Footer */
+.fashub-sale-footer {
+  text-align: center;
+}
+
+.fashub-view-all-btn {
+  background: white;
+  color: #764ba2;
+  border: none;
+  padding: 1.2rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.fashub-view-all-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.fashub-arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.fashub-view-all-btn:hover .fashub-arrow-icon {
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .fashub-flash-sale {
+    padding: 3rem 1rem;
+  }
+  
+  .fashub-sale-title {
+    font-size: 2.2rem;
+  }
+  
+  .fashub-category-nav {
+    gap: 0.5rem;
+  }
+  
+  .fashub-category-btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .fashub-sale-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fashub-sale-timer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .fashub-category-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
+  
+  .fashub-sale-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .fashub-view-all-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 

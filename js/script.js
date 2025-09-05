@@ -1363,7 +1363,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // DOM Elements
   const navWishlistBtn = document.querySelector(
-    ".wishlist-btn:not(.product-actions .wishlist-btn)"
+    ".wishlist-btn:not(.pr0oduct-actions .wishlist-btn)"
   );
   const navWishlistCount = document.querySelector(
     ".wishlist-btn:not(.product-actions .wishlist-btn) .wishlist-count"
